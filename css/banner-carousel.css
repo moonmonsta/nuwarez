@@ -1,0 +1,78 @@
+.banner-carousel-section {
+  padding: 1rem 0;
+  background: var(--dark-bg);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.banner-carousel {
+  position: relative;
+  max-width: 1400px;
+  margin: 0 auto;
+  height: 100px;
+  overflow: hidden;
+}
+
+.banner-container {
+  display: flex;
+  gap: 2rem;
+  position: absolute;
+  animation: scroll 30s linear infinite;
+  width: max-content;
+}
+
+.banner-item {
+  width: 300px;
+  height: 80px;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.1) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  transition: all 0.3s ease;
+}
+
+.banner-item:hover {
+  transform: translateY(-2px);
+  border-color: var(--primary);
+  box-shadow: 0 4px 20px rgba(0, 255, 157, 0.15);
+}
+
+.banner-item img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-300px * 4 - 2rem * 4));
+  }
+}
+
+/* Gradient overlays for smooth edges */
+.banner-carousel::before,
+.banner-carousel::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.banner-carousel::before {
+  left: 0;
+  background: linear-gradient(to right, var(--dark-bg) 0%, transparent 100%);
+}
+
+.banner-carousel::after {
+  right: 0;
+  background: linear-gradient(to left, var(--dark-bg) 0%, transparent 100%);
+}

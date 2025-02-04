@@ -1,0 +1,207 @@
+/* Design System */
+:root {
+  /* Colors - Base */
+  --primary-hue: 157;
+  --primary-sat: 100%;
+  --primary: hsl(var(--primary-hue) var(--primary-sat) 55%);
+  --primary-light: hsl(var(--primary-hue) var(--primary-sat) 65%);
+  --primary-dark: hsl(var(--primary-hue) var(--primary-sat) 45%);
+  
+  --secondary-hue: 195;
+  --secondary: hsl(var(--secondary-hue) 100% 60%);
+  --accent: hsl(300 100% 60%);
+  
+  /* Colors - Semantic */
+  --success: hsl(142 71% 50%);
+  --warning: hsl(48 96% 58%);
+  --error: hsl(0 84% 65%);
+  --info: hsl(201 94% 42%);
+
+  /* Colors - Gemstone */
+  --ruby: hsl(340 92% 52%);
+  --sapphire: hsl(217 84% 44%);
+  --sapphire-rgb: 31, 97, 217;  /* RGB values for sapphire */
+  --emerald: hsl(140 45% 60%);
+  --emerald-rgb: 102, 191, 134;  /* RGB values for emerald */
+  --diamond: hsl(195 100% 90%);
+  --amethyst: hsl(270 40% 65%);
+  --topaz: hsl(35 100% 78%);
+  --opal: hsl(165 12% 76%);
+  --peridot: hsl(93 30% 68%);
+
+  /* Colors - Surface */
+  --surface-0: hsl(220 20% 7%);
+  --surface-1: hsl(220 20% 12%);
+  --surface-2: hsl(220 20% 15%);
+  --surface-3: hsl(220 20% 20%);
+  --surface-4: hsl(220 20% 25%);
+  
+  /* Colors - Text */
+  --text-primary: hsl(0 0% 98%);
+  --text-secondary: hsl(0 0% 80%);
+  --text-tertiary: hsl(0 0% 60%);
+  --text-disabled: hsl(0 0% 45%);
+
+  /* Colors - Transparent Variants */
+  --primary-transparent: hsl(var(--primary-hue) var(--primary-sat) 55% / 0.15);
+  --secondary-transparent: hsl(var(--secondary-hue) 100% 60% / 0.15);
+  --surface-transparent: hsl(220 20% 15% / 0.8);
+
+  /* Dark Theme Aliases */
+  --darker-bg: var(--surface-0);
+  --dark-bg: var(--surface-1);
+  --card-bg: var(--surface-2);
+  --text: var(--text-primary);
+  --text-muted: var(--text-secondary);
+  --text-heading: var(--text-primary);
+  --text-accent: var(--primary);
+  --text-inverse: var(--surface-0);
+  --border: hsl(220 20% 100% / 0.15);
+  --input-bg: var(--surface-1);
+
+  /* Typography */
+  --font-heading: 'Space Grotesk', system-ui, sans-serif;
+  --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+  
+  /* Font Sizes - Fluid Scale */
+  --font-size-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+  --font-size-sm: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);
+  --font-size-base: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+  --font-size-lg: clamp(1.125rem, 1rem + 0.625vw, 1.25rem);
+  --font-size-xl: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem);
+  --font-size-2xl: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --font-size-3xl: clamp(2rem, 1.8rem + 1.25vw, 2.5rem);
+  --font-size-4xl: clamp(2.5rem, 2.3rem + 1.5vw, 3rem);
+
+  /* Font Weights */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Line Heights */
+  --line-height-tight: 1.2;
+  --line-height-snug: 1.4;
+  --line-height-base: 1.5;
+  --line-height-relaxed: 1.7;
+  --line-height-loose: 2;
+
+  /* Line Heights - Contextual */
+  --line-height-heading: var(--line-height-tight);
+  --line-height-body: var(--line-height-relaxed);
+
+  /* Letter Spacing */
+  --letter-spacing-tight: -0.04em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0.02em;
+  --letter-spacing-wider: 0.05em;
+
+  /* Letter Spacing - Contextual */
+  --letter-spacing-heading: var(--letter-spacing-tight);
+  --letter-spacing-body: var(--letter-spacing-normal);
+
+  /* Spacing Scale */
+  --spacing-3xs: clamp(0.25rem, 0.2rem + 0.25vw, 0.375rem);
+  --spacing-2xs: clamp(0.375rem, 0.3rem + 0.375vw, 0.5rem);
+  --spacing-xs: clamp(0.5rem, 0.4rem + 0.5vw, 0.75rem);
+  --spacing-sm: clamp(0.75rem, 0.6rem + 0.75vw, 1rem);
+  --spacing-md: clamp(1rem, 0.8rem + 1vw, 1.5rem);
+  --spacing-lg: clamp(1.5rem, 1.2rem + 1.5vw, 2rem);
+  --spacing-xl: clamp(2rem, 1.6rem + 2vw, 3rem);
+  --spacing-2xl: clamp(3rem, 2.4rem + 3vw, 4rem);
+  --spacing-3xl: clamp(4rem, 3.2rem + 4vw, 6rem);
+
+  /* Layout */
+  --content-width-xs: 20rem;
+  --content-width-sm: 30rem;
+  --content-width-md: 45rem;
+  --content-width-lg: 65rem;
+  --content-width-xl: 80rem;
+  --content-width-max: 95rem;
+  --content-width-text: 70ch;
+
+  /* Border Radius */
+  --border-radius-sm: 0.25rem;
+  --border-radius-md: 0.5rem;
+  --border-radius-lg: 1rem;
+  --border-radius-xl: 1.5rem;
+  --border-radius-2xl: 2rem;
+  --border-radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 4px hsl(220 20% 0% / 0.15);
+  --shadow-md: 0 4px 8px -1px hsl(220 20% 0% / 0.15);
+  --shadow-lg: 0 12px 20px -3px hsl(220 20% 0% / 0.15);
+  --shadow-xl: 0 24px 30px -5px hsl(220 20% 0% / 0.15);
+  --shadow-2xl: 0 32px 60px -12px hsl(220 20% 0% / 0.3);
+  --shadow-inner: inset 0 2px 4px 0 hsl(220 20% 0% / 0.15);
+
+  /* Gradients */
+  --gradient-overlay: linear-gradient(
+    to bottom,
+    hsl(220 20% 0% / 0) 0%,
+    hsl(220 20% 0% / 0.8) 100%
+  );
+  
+  --gradient-primary: linear-gradient(
+    135deg,
+    var(--primary) 0%,
+    var(--secondary) 100%
+  );
+
+  /* Transitions */
+  --duration-fast: 150ms;
+  --duration-normal: 300ms;
+  --duration-slow: 500ms;
+  
+  --ease-in-sine: cubic-bezier(0.12, 0, 0.39, 0);
+  --ease-out-sine: cubic-bezier(0.61, 1, 0.88, 1);
+  --ease-in-out-sine: cubic-bezier(0.37, 0, 0.63, 1);
+  
+  --ease-in-cubic: cubic-bezier(0.32, 0, 0.67, 0);
+  --ease-out-cubic: cubic-bezier(0.33, 1, 0.68, 1);
+  --ease-in-out-cubic: cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* Z-Index Scale */
+  --z-negative: -1;
+  --z-elevate: 1;
+  --z-dropdown: 10;
+  --z-sticky: 20;
+  --z-fixed: 30;
+  --z-modal: 40;
+  --z-popover: 50;
+  --z-tooltip: 60;
+
+  /* Focus */
+  --focus-ring-width: 3px;
+  --focus-ring-offset: 2px;
+  --focus-ring-color: var(--primary);
+  --focus-outline: var(--focus-ring-width) solid var(--focus-ring-color);
+
+  /* Animations */
+  --hover-transform: translateY(-5px) scale(1.02);
+}
+
+/* Container Queries */
+@container (min-width: 40em) {
+  :root {
+    --spacing-base: 1.5rem;
+  }
+}
+
+@container (min-width: 60em) {
+  :root {
+    --spacing-base: 2rem;
+  }
+}
+
+/* High Contrast Overrides */
+@media (forced-colors: active) {
+  :root {
+    --primary: CanvasText;
+    --secondary: CanvasText;
+    --accent: CanvasText;
+    --text: CanvasText;
+    --border: CanvasText;
+  }
+}

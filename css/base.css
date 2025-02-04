@@ -1,0 +1,496 @@
+@import 'variables.css';
+
+/* Modern CSS Reset */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Modern viewport units for better mobile support */
+:root {
+  --vh: 1vh;
+  --vw: 1vw;
+  --scrollbar-width: 0px;
+}
+
+/* Container Query Support */
+@supports (container-type: inline-size) {
+  .container {
+    container-type: inline-size;
+    container-name: main;
+  }
+}
+
+/* Accessibility - Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* High Contrast Mode Support */
+@media (forced-colors: active) {
+  * {
+    forced-color-adjust: none;
+  }
+}
+
+/* Modern Color Scheme Support */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+  }
+}
+
+/* Canvas Background */
+#particleCanvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.4;
+  will-change: transform;
+  backdrop-filter: blur(1px);
+}
+
+/* Base Styles with Logical Properties */
+body {
+  font-family: var(--font-body);
+  line-height: var(--line-height-body);
+  color: var(--text);
+  background: var(--darker-bg);
+  position: relative;
+  min-block-size: 100vh;
+  min-block-size: calc(var(--vh) * 100);
+  overflow-x: hidden;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-regular);
+  letter-spacing: var(--letter-spacing-body);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-synthesis: none;
+}
+
+/* Layout Grid System */
+.grid {
+  display: grid;
+  gap: var(--spacing-lg);
+  width: 100%;
+}
+
+.grid-auto-fit {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+}
+
+.grid-auto-fill {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr));
+}
+
+/* Content Container */
+.content-container {
+  width: min(100% - var(--spacing-2xl), var(--content-width-max));
+  margin-inline: auto;
+  padding-inline: clamp(var(--spacing-md), 3vw, var(--spacing-xl));
+}
+
+/* Section Layout */
+section {
+  position: relative;
+  padding-block: clamp(var(--spacing-xl), 5vh, var(--spacing-3xl));
+  background: 
+    linear-gradient(135deg, rgba(0, 20, 15, 0.95) 0%, rgba(0, 20, 15, 0.9) 100%),
+    repeating-linear-gradient(45deg, rgba(0, 255, 157, 0.1) 0px, rgba(0, 255, 157, 0.1) 1px, transparent 1px, transparent 10px),
+    repeating-linear-gradient(-45deg, rgba(0, 212, 255, 0.1) 0px, rgba(0, 212, 255, 0.1) 1px, transparent 1px, transparent 10px);
+  margin-block: clamp(var(--spacing-lg), 3vh, var(--spacing-2xl));
+  max-inline-size: 100%;
+  z-index: 1;
+  container-type: inline-size;
+  border-radius: var(--border-radius-lg);
+  backdrop-filter: blur(8px);
+  box-shadow: inset 0 0 30px rgba(0, 255, 157, 0.03);
+  border: 1px solid rgba(0, 255, 157, 0.05);
+}
+
+/* Content Block Component */
+.content-block {
+  font-family: var(--font-body);
+  line-height: var(--line-height-body);
+  text-align: left;
+  padding: clamp(var(--spacing-lg), 4vh, var(--spacing-2xl));
+  margin-block: var(--spacing-xl);
+  background: 
+    /* Semi-transparent base with texture visibility */
+    linear-gradient(135deg, rgba(0, 20, 15, 0.92) 0%, rgba(0, 20, 15, 0.88) 100%),
+    /* Enhanced diagonal pattern */
+    repeating-linear-gradient(45deg, 
+      rgba(0, 255, 157, 0.15) 0px,
+      rgba(0, 255, 157, 0.15) 1px,
+      transparent 1px,
+      transparent 15px
+    );
+  border-radius: var(--border-radius-lg);
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.1),
+    0 0 0 1px rgba(0, 255, 157, 0.05),
+    inset 0 0 30px rgba(0, 255, 157, 0.02);
+  backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 1;
+  transition: transform var(--duration-normal) var(--ease-out-cubic),
+              box-shadow var(--duration-normal) var(--ease-out-cubic),
+              background-position var(--duration-normal) var(--ease-out-cubic);
+}
+
+.content-block:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 8px 30px rgba(0, 0, 0, 0.15),
+    0 0 0 1px rgba(0, 255, 157, 0.08),
+    inset 0 0 30px rgba(0, 255, 157, 0.03);
+  background-position: 100% 100%;
+  filter: contrast(1.05) brightness(1.02);
+}
+
+.content-block > :first-child {
+  margin-block-start: 0;
+}
+
+.content-block > :last-child {
+  margin-block-end: 0;
+}
+
+/* Block Background Component */
+.block-background {
+  padding: var(--spacing-xl);
+  box-sizing: border-box;
+  background: 
+    linear-gradient(135deg, rgba(0, 20, 15, 0.92) 0%, rgba(0, 20, 15, 0.88) 100%),
+    repeating-linear-gradient(45deg, 
+      rgba(0, 255, 157, 0.15) 0px,
+      rgba(0, 255, 157, 0.15) 1px,
+      transparent 1px,
+      transparent 15px
+    );
+  border-radius: var(--border-radius-lg);
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.1),
+    0 0 0 1px rgba(0, 255, 157, 0.05),
+    inset 0 0 30px rgba(0, 255, 157, 0.02);
+  backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 1;
+  transition: transform var(--duration-normal) var(--ease-out-cubic),
+              box-shadow var(--duration-normal) var(--ease-out-cubic);
+}
+
+.block-background:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 8px 30px rgba(0, 0, 0, 0.15),
+    0 0 0 1px rgba(0, 255, 157, 0.08),
+    inset 0 0 30px rgba(0, 255, 157, 0.03);
+}
+
+/* Typography Scale */
+h1, h2, h3, h4, h5, h6, .section-title {
+  font-family: var(--font-heading);
+  line-height: var(--line-height-heading);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-heading);
+  margin-block: 0.5em 0.7em;
+  max-inline-size: var(--content-width-text);
+  color: var(--text-heading);
+}
+
+h1 {
+  font-size: clamp(var(--font-size-2xl), 5vw + 1rem, var(--font-size-4xl));
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  margin-block-start: 0.3em;
+}
+
+h2, .section-title {
+  font-size: clamp(var(--font-size-xl), 3vw + 0.5rem, var(--font-size-2xl));
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+}
+
+h3 {
+  font-size: clamp(var(--font-size-lg), 2vw + 0.3rem, var(--font-size-xl));
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+}
+
+h4 {
+  font-size: clamp(var(--font-size-base), 1.5vw + 0.2rem, var(--font-size-lg));
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+}
+
+p {
+  margin-block-end: var(--spacing-md);
+  line-height: var(--line-height-body);
+  max-inline-size: var(--content-width-text);
+  color: var(--text);
+}
+
+/* Text Content Spacing */
+* + p {
+  margin-block-start: var(--spacing-md);
+}
+
+p + h2, p + h3, p + h4 {
+  margin-block-start: var(--spacing-xl);
+}
+
+/* Section Title Decoration */
+.section-title {
+  text-align: center;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: var(--primary);
+  margin-block-start: var(--spacing-md);
+  margin-inline: auto;
+  border-radius: 2px;
+  box-shadow: 0 0 20px rgb(0 255 157 / 0.5);
+}
+
+/* Interactive Elements */
+/* Base Link Styles */
+a {
+  font-weight: var(--font-weight-medium);
+  color: var(--primary);
+  transition: color var(--duration-normal) var(--ease-out-cubic),
+              background-color var(--duration-normal) var(--ease-out-cubic),
+              transform var(--duration-normal) var(--ease-out-cubic),
+              box-shadow var(--duration-normal) var(--ease-out-cubic);
+  text-decoration: none;
+  display: inline-block;
+}
+
+a:hover {
+  color: var(--primary-light);
+  transform: translateY(-1px);
+}
+
+/* Button Component */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) var(--spacing-md);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius-md);
+  color: var(--text-primary);
+  font-weight: var(--font-weight-medium);
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition: transform var(--duration-normal) var(--ease-out-cubic),
+              background-color var(--duration-normal) var(--ease-out-cubic),
+              border-color var(--duration-normal) var(--ease-out-cubic),
+              box-shadow var(--duration-normal) var(--ease-out-cubic),
+              color var(--duration-normal) var(--ease-out-cubic);
+  will-change: transform;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, 
+    rgba(var(--sapphire-rgb), 0.95), 
+    rgba(var(--emerald-rgb), 0.95));
+  opacity: 0;
+  z-index: -1;
+  transition: opacity var(--duration-normal) var(--ease-out-cubic);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  border-color: var(--sapphire);
+  box-shadow: 
+    0 0 20px hsla(217, 84%, 44%, 0.3),
+    0 0 40px hsla(140, 45%, 60%, 0.2);
+}
+
+.btn:hover::before {
+  opacity: 0.15;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+/* Focus States */
+a:focus-visible,
+.btn:focus-visible {
+  outline: var(--focus-outline);
+  outline-offset: var(--focus-ring-offset);
+  box-shadow: 0 0 0 var(--focus-ring-offset) var(--surface-0);
+}
+
+/* Convert text links to buttons */
+a[href]:not([class]) {
+  position: relative;
+  color: var(--sapphire);
+  font-weight: var(--font-weight-medium);
+  padding: 0.2em 0.4em;
+  margin: -0.2em -0.4em;
+  border-radius: var(--border-radius-sm);
+  transition: color var(--duration-normal) var(--ease-out-cubic),
+              background-color var(--duration-normal) var(--ease-out-cubic),
+              box-shadow var(--duration-normal) var(--ease-out-cubic),
+              transform var(--duration-normal) var(--ease-out-cubic);
+  will-change: transform, box-shadow;
+}
+
+a[href]:not([class]):hover {
+  color: var(--emerald);
+  background: linear-gradient(135deg, 
+    hsla(217, 84%, 44%, 0.1),
+    hsla(140, 45%, 60%, 0.1));
+  box-shadow: 
+    0 0 15px hsla(217, 84%, 44%, 0.2),
+    0 0 30px hsla(140, 45%, 60%, 0.1);
+}
+
+/* Form Elements */
+input, 
+button,
+textarea,
+select {
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  letter-spacing: var(--letter-spacing-body);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius-md);
+  background: var(--input-bg);
+  color: var(--text);
+  transition: border-color var(--duration-normal) var(--ease-out-cubic),
+              background-color var(--duration-normal) var(--ease-out-cubic),
+              box-shadow var(--duration-normal) var(--ease-out-cubic),
+              transform var(--duration-normal) var(--ease-out-cubic);
+  will-change: transform, box-shadow;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-transparent);
+}
+
+button {
+  cursor: pointer;
+  background: var(--primary);
+  color: var(--text-inverse);
+  border: none;
+  font-weight: var(--font-weight-medium);
+  padding: var(--spacing-sm) var(--spacing-lg);
+}
+
+button:hover {
+  background: var(--primary-light);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 255, 157, 0.15);
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+/* Loading State */
+.loading {
+  position: relative;
+  pointer-events: none;
+}
+
+.loading::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgb(255 255 255 / 0.1);
+  backdrop-filter: blur(4px);
+}
+
+/* Scroll Animation Classes */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity var(--duration-normal) var(--ease-out-cubic),
+              transform var(--duration-normal) var(--ease-out-cubic);
+}
+
+.scroll-reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Utility Classes */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.small-text {
+  font-size: var(--font-size-sm);
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+/* Print Styles */
+@media print {
+  body {
+    background: none;
+    color: #000;
+  }
+  
+  #particleCanvas {
+    display: none;
+  }
+  
+  a {
+    text-decoration: underline;
+  }
+  
+  @page {
+    margin: 2cm;
+  }
+}
+
+/* Support for older browsers */
+@supports not (inset: 0) {
+  #particleCanvas {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+}
