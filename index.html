@@ -11,21 +11,25 @@
     <link rel="stylesheet" href="components/navigation/navigation.css">
     <link rel="stylesheet" href="components/hero/hero.css">
     <link rel="stylesheet" href="components/featured/featured.css">
-    <link rel="stylesheet" href="css/banner-carousel.css">
-    <link rel="stylesheet" href="css/about.css">
-    <link rel="stylesheet" href="css/articles.css">
-    <link rel="stylesheet" href="css/newsletter.css">
-    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="components/banner-carousel/banner-carousel.css">
+    <link rel="stylesheet" href="components/about/about.css">
+    <link rel="stylesheet" href="components/articles/articles.css">
+    <link rel="stylesheet" href="components/newsletter/newsletter.css">
+    <link rel="stylesheet" href="components/footer/footer.css">
 </head>
 <body>
     <!-- Navigation Component -->
     <div id="navigation-component"></div>
     <script>
         fetch('components/navigation/navigation.html')
-            .then(response => response.text())
+            .then(response => {
+                if (!response.ok) throw new Error(`Failed to load navigation component: ${response.status}`);
+                return response.text();
+            })
             .then(html => {
                 document.getElementById('navigation-component').innerHTML = html;
-            });
+            })
+            .catch(error => console.error(error));
     </script>
 
     <main>
@@ -33,88 +37,132 @@
         <div id="hero-component"></div>
         <script>
             fetch('components/hero/hero.html')
-                .then(response => response.text())
+                .then(response => {
+                    if (!response.ok) throw new Error(`Failed to load hero component: ${response.status}`);
+                    return response.text();
+                })
                 .then(html => {
                     document.getElementById('hero-component').innerHTML = html;
-                });
+                })
+                .catch(error => console.error(error));
         </script>
 
         <!-- Featured Component -->
         <div id="featured-component"></div>
         <script>
             fetch('components/featured/featured.html')
-                .then(response => response.text())
+                .then(response => {
+                    if (!response.ok) throw new Error(`Failed to load featured component: ${response.status}`);
+                    return response.text();
+                })
                 .then(html => {
                     document.getElementById('featured-component').innerHTML = html;
-                });
+                })
+                .catch(error => console.error(error));
         </script>
 
-        <!-- About Section -->
-        <section id="about" class="about">
-            <h2>About NuWarez</h2>
-            <div class="about__content">
-                <p>We curate and analyze emerging trends in technology, sustainability, and innovation to help you stay ahead of the curve.</p>
-            </div>
-        </section>
+        <!-- Banner Carousel Component -->
+        <div id="banner-carousel-component"></div>
+        <script>
+            fetch('components/banner-carousel/banner-carousel.html')
+                .then(response => {
+                    if (!response.ok) throw new Error(`Failed to load banner carousel component: ${response.status}`);
+                    return response.text();
+                })
+                .then(html => {
+                    document.getElementById('banner-carousel-component').innerHTML = html;
+                })
+                .catch(error => console.error(error));
+        </script>
 
-        <!-- Articles Section -->
-        <section id="articles" class="articles">
-            <h2>Latest Articles</h2>
-            <div class="articles-grid">
-                <!-- Articles will be dynamically populated -->
-            </div>
-        </section>
+        <!-- About Component -->
+        <div id="about-component"></div>
+        <script>
+            fetch('components/about/about.html')
+                .then(response => {
+                    if (!response.ok) throw new Error(`Failed to load about component: ${response.status}`);
+                    return response.text();
+                })
+                .then(html => {
+                    document.getElementById('about-component').innerHTML = html;
+                })
+                .catch(error => console.error(error));
+        </script>
 
-        <!-- Newsletter Section -->
-        <section id="newsletter" class="newsletter">
-            <h2>Stay Updated</h2>
-            <p>Get the latest insights delivered to your inbox</p>
-            <form class="newsletter__form">
-                <input type="email" placeholder="Enter your email" required>
-                <button type="submit">Subscribe</button>
-            </form>
-        </section>
+        <!-- Articles Component -->
+        <div id="articles-component"></div>
+        <script>
+            fetch('components/articles/articles.html')
+                .then(response => {
+                    if (!response.ok) throw new Error(`Failed to load articles component: ${response.status}`);
+                    return response.text();
+                })
+                .then(html => {
+                    document.getElementById('articles-component').innerHTML = html;
+                })
+                .catch(error => console.error(error));
+        </script>
+
+        <!-- Newsletter Component -->
+        <div id="newsletter-component"></div>
+        <script>
+            fetch('components/newsletter/newsletter.html')
+                .then(response => {
+                    if (!response.ok) throw new Error(`Failed to load newsletter component: ${response.status}`);
+                    return response.text();
+                })
+                .then(html => {
+                    document.getElementById('newsletter-component').innerHTML = html;
+                })
+                .catch(error => console.error(error));
+        </script>
     </main>
 
-    <!-- Footer -->
-    <footer class="main-footer">
-        <div class="footer__content">
-            <div class="footer__brand">
-                <img src="favicon.svg" alt="NuWarez Logo" width="32" height="32">
-                <p>NuWarez - Innovation & Technology Hub</p>
-            </div>
-            <div class="footer__links">
-                <div class="footer__column">
-                    <h3>Explore</h3>
-                    <ul>
-                        <li><a href="#featured">Featured</a></li>
-                        <li><a href="#niches">Niches</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#articles">Articles</a></li>
-                    </ul>
-                </div>
-                <div class="footer__column">
-                    <h3>Connect</h3>
-                    <ul>
-                        <li><a href="#newsletter">Newsletter</a></li>
-                        <li><a href="#">Twitter</a></li>
-                        <li><a href="#">LinkedIn</a></li>
-                        <li><a href="#">GitHub</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="footer__bottom">
-            <p>&copy; 2025 NuWarez. All rights reserved.</p>
-        </div>
-    </footer>
+    <!-- Footer Component -->
+    <div id="footer-component"></div>
+    <script>
+        fetch('components/footer/footer.html')
+            .then(response => {
+                if (!response.ok) throw new Error(`Failed to load footer component: ${response.status}`);
+                return response.text();
+            })
+            .then(html => {
+                document.getElementById('footer-component').innerHTML = html;
+            })
+            .catch(error => console.error(error));
+    </script>
 
     <!-- JavaScript Files -->
-    <script src="js/pattern-animations.js"></script>
-    <script src="js/scroll-animations.js"></script>
-    <script src="components/navigation/navigation.js"></script>
-    <script src="components/hero/hero.js"></script>
-    <script src="components/featured/featured.js"></script>
-    <script src="js/script.js"></script>
+    <script>
+        // Wait for all components to load before initializing JavaScript
+        document.addEventListener('DOMContentLoaded', () => {
+            // Load all component scripts
+            const scripts = [
+                'js/pattern-animations.js',
+                'js/scroll-animations.js',
+                'components/navigation/navigation.js',
+                'components/hero/hero.js',
+                'components/featured/featured.js',
+                'components/banner-carousel/banner-carousel.js',
+                'components/about/about.js',
+                'components/articles/articles.js',
+                'components/newsletter/newsletter.js',
+                'components/footer/footer.js',
+                'js/script.js'
+            ];
+
+            // Load scripts sequentially to maintain order
+            scripts.reduce((promise, script) => {
+                return promise.then(() => {
+                    return new Promise((resolve) => {
+                        const scriptEl = document.createElement('script');
+                        scriptEl.src = script;
+                        scriptEl.onload = resolve;
+                        document.body.appendChild(scriptEl);
+                    });
+                });
+            }, Promise.resolve());
+        });
+    </script>
 </body>
 </html>
