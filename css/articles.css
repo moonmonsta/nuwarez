@@ -55,8 +55,8 @@
 }
 
 .filter-btn:hover {
-    background: rgba(0, 255, 157, 0.1);
-    border-color: rgba(0, 255, 157, 0.2);
+    background: var(--surface-3);
+    border-color: var(--primary);
     color: var(--text-primary);
     transform: translateY(-2px);
 }
@@ -124,7 +124,7 @@
     position: absolute;
     inset: 0;
     background: linear-gradient(135deg,
-        rgba(0, 255, 157, 0.03) 0%,
+        rgba(255, 255, 255, 0.03) 0%,
         transparent 100%
     );
     opacity: 0;

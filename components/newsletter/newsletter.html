@@ -1,0 +1,30 @@
+<section class="newsletter">
+    <div class="newsletter__container">
+        <div class="newsletter__content">
+            <h2>Stay Updated</h2>
+            <p>Get the latest insights on technology, sustainability, and modern entrepreneurship delivered to your inbox.</p>
+        </div>
+        
+        <form class="newsletter__form" id="newsletterForm">
+            <div class="newsletter__input-group">
+                <input 
+                    type="email" 
+                    name="email" 
+                    id="newsletterEmail" 
+                    placeholder="Enter your email address"
+                    required
+                    aria-label="Email address"
+                >
+                <button type="submit" class="newsletter__submit">
+                    Subscribe
+                    <span class="newsletter__submit-icon">→</span>
+                </button>
+            </div>
+            <div class="newsletter__message" aria-live="polite"></div>
+            <label class="newsletter__privacy">
+                <input type="checkbox" required>
+                <span>I agree to receive newsletters and accept the data privacy statement.</span>
+            </label>
+        </form>
+    </div>
+</section>

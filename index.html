@@ -3,429 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="NuWareZ - Your premier destination for tech innovation, sustainability, wellness, and entrepreneurship insights. Stay ahead with cutting-edge analysis and practical tips.">
-    <meta name="theme-color" content="#000000">
-    <title>NuWareZ | Tech, Sustainability, Wellness & Entrepreneurship</title>
-    
-    <!-- Favicon -->
+    <title>NuWarez - Innovation & Technology Hub</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="icon" type="image/png" href="favicon.png">
-    
-    <!-- Preconnect -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Styles -->
-    <link rel="stylesheet" href="styles.css">
-    
-    <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    <script src="js/script.js" defer></script>
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="components/navigation/navigation.css">
+    <link rel="stylesheet" href="components/hero/hero.css">
+    <link rel="stylesheet" href="components/featured/featured.css">
+    <link rel="stylesheet" href="css/banner-carousel.css">
+    <link rel="stylesheet" href="css/about.css">
+    <link rel="stylesheet" href="css/articles.css">
+    <link rel="stylesheet" href="css/newsletter.css">
+    <link rel="stylesheet" href="css/footer.css">
 </head>
 <body>
-    <canvas id="particleCanvas"></canvas>
-    <header class="hero" role="banner">
-        <nav>
-            <div class="logo">NuWareZ</div>
-            <button class="mobile-menu-btn">☰</button>
-            <div class="nav-container">
-                <ul class="nav-links">
-                    <li><a href="#tech">Tech</a></li>
-                    <li><a href="#sustainability">Sustainability</a></li>
-                    <li><a href="#entrepreneurship">Entrepreneurship</a></li>
-                    <li><a href="#wellness">Wellness</a></li>
-                    <li><a href="#nufinds">NuFinds</a></li>
-                    <li><a href="#articles">Articles</a></li>
-                </ul>
-                <div class="search-container">
-                    <span class="search-icon">🔍</span>
-                    <input type="search" class="search-bar" placeholder="Search...">
-                </div>
-                <button class="theme-toggle" aria-label="Toggle dark mode">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                </button>
-            </div>
-        </nav>
-        <div class="hero-content">
-            <div class="hero-brand">NuWareZ</div>
-            <h1 data-text="Innovation Meets Purpose">Innovation Meets Purpose</h1>
-            <p>Empowering innovators to thrive mindfully and live sustainably.</p>
-            <form id="hero-email-form" class="hero-email-form">
-                <input type="email" placeholder="Enter your email for tech insights" required>
-                <button type="submit" class="cta">Get Started</button>
-            </form>
-        </div>
-    </header>
+    <!-- Navigation Component -->
+    <div id="navigation-component"></div>
+    <script>
+        fetch('components/navigation/navigation.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('navigation-component').innerHTML = html;
+            });
+    </script>
 
-    <main id="main-content" role="main">
-        <section id="featured" class="featured-section fade-in" aria-labelledby="featured-title">
-            <div class="block-background">
-                <h2 id="featured-title" class="section-title">Featured Topics</h2>
-                <div class="featured-container">
-                <div class="featured-row">
-                    <div class="featured-content">
-                        <article class="featured-card" data-topic="tech">
-                            <span class="topic-tag">Tech/AI</span>
-                            <h3>Technology & AI</h3>
-                            <p>Explore AI ethics, smart home innovations, and robotics trends shaping 2025. Get unbiased reviews and guides for tech that respects people and the planet.</p>
-                            <a href="#" class="read-more">Discover Smarter Tech →</a>
-                        </article>
-                        <article class="featured-card" data-topic="sustainability">
-                            <span class="topic-tag">Sustainability</span>
-                            <h3>Sustainable Living</h3>
-                            <p>Master zero-waste living, renewable energy solutions, and eco-friendly brands. Practical tips for homes, families, and conscious consumers.</p>
-                            <a href="#" class="read-more">Live Greener Now →</a>
-                        </article>
-                        <article class="featured-card" data-topic="entrepreneurship">
-                            <span class="topic-tag">Entrepreneurship</span>
-                            <h3>Entrepreneurial Innovation</h3>
-                            <p>Launch ethical startups, green side hustles, and AI-driven businesses. Trends, tools, and stories for purpose-driven founders.</p>
-                            <a href="#" class="read-more">Build with Purpose →</a>
-                        </article>
-                    </div>
-                    <div class="featured-image" style="background-image: url('placeholder.svg')"></div>
-                </div>
-                <div class="featured-row">
-                    <div class="featured-content">
-                        <article class="featured-card" data-topic="wellness">
-                            <span class="topic-tag">Wellness</span>
-                            <h3>Holistic Wellness</h3>
-                            <p>Upgrade your well-being with mental health tech, ergonomic gear, and digital detox strategies. Science-backed tools for balanced modern living.</p>
-                            <a href="#" class="read-more">Prioritize Wellness →</a>
-                        </article>
-                        <article class="featured-card" data-topic="nufinds">
-                            <span class="topic-tag">NuFinds</span>
-                            <h3>NuFinds</h3>
-                            <p>Unearth quirky tech, under-the-radar apps, and viral life hacks. For the curious minds who love "why didn't I think of that?" moments.</p>
-                            <a href="#" class="read-more">Explore Hidden Gems →</a>
-                        </article>
-                        <article class="featured-card" data-topic="remote-work">
-                            <span class="topic-tag">Remote Work</span>
-                            <h3>Remote & Hybrid Work</h3>
-                            <p>Master productivity with hybrid work tools, burnout prevention strategies, and AI-driven efficiency hacks. Optimize your remote work experience.</p>
-                            <a href="#" class="read-more">Boost Productivity →</a>
-                        </article>
-                    </div>
-                    <div class="featured-image" style="background-image: url('placeholder.svg')"></div>
-                </div>
+    <main>
+        <!-- Hero Component -->
+        <div id="hero-component"></div>
+        <script>
+            fetch('components/hero/hero.html')
+                .then(response => response.text())
+                .then(html => {
+                    document.getElementById('hero-component').innerHTML = html;
+                });
+        </script>
+
+        <!-- Featured Component -->
+        <div id="featured-component"></div>
+        <script>
+            fetch('components/featured/featured.html')
+                .then(response => response.text())
+                .then(html => {
+                    document.getElementById('featured-component').innerHTML = html;
+                });
+        </script>
+
+        <!-- About Section -->
+        <section id="about" class="about">
+            <h2>About NuWarez</h2>
+            <div class="about__content">
+                <p>We curate and analyze emerging trends in technology, sustainability, and innovation to help you stay ahead of the curve.</p>
             </div>
         </section>
 
-        <section id="about" class="about-section fade-in" aria-labelledby="about-title">
-            <div class="content-container">
-                <h2 id="about-title" class="section-title">Who We Are</h2>
-                <div class="about-content">
-                    <div class="about-image">
-                        <img src="placeholder.svg" alt="Innovative technology and sustainable living" 
-                             loading="lazy" width="600" height="450"
-                             style="width: 100%; height: 100%; object-fit: cover;">
-                        <div class="about-image-overlay"></div>
-                    </div>
-                    <div class="about-text">
-                        <section class="about-block about-block-1">
-                            <header>
-                                <h3>Your Guide to Innovation</h3>
-                            </header>
-                            <p>Nuwarez is your premier destination for exploring the intersection of technology, sustainability, and mindful living. We curate cutting-edge insights on AI advancements, sustainable practices, and conscious entrepreneurship.</p>
-                        </section>
-                        <section class="about-block about-block-2">
-                            <p>Join our community in discovering how we can leverage innovation for positive change while maintaining digital wellness.</p>
-                        </section>
-                        <section class="about-block about-block-3">
-                            <a href="/about" class="about-link">
-                                Learn more about our mission
-                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                                    <path d="M1 8h14M8 1l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </a>
-                        </section>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="latest-articles" class="articles-section fade-in" aria-labelledby="articles-title">
-            <div class="block-background">
-                <div class="articles-header">
-                <h2 id="articles-title" class="section-title">Popular Articles</h2>
-                <div class="article-filters">
-                    <button class="filter-btn active" data-filter="all">All</button>
-                    <button class="filter-btn" data-filter="tech">Tech</button>
-                    <button class="filter-btn" data-filter="sustainability">Sustainability</button>
-                    <button class="filter-btn" data-filter="entrepreneurship">Business</button>
-                    <button class="filter-btn" data-filter="wellness">Wellness</button>
-                </div>
-            </div>
-            
+        <!-- Articles Section -->
+        <section id="articles" class="articles">
+            <h2>Latest Articles</h2>
             <div class="articles-grid">
-                <div class="main-articles">
-                    <div class="carousel-container">
-                        <button class="carousel-btn prev">‹</button>
-                        <div class="articles-carousel">
-                            <article class="article-card" data-topic="tech">
-                                <div class="article-image" style="background: url('placeholder.svg') center/cover">
-                                    <span class="category-tag">Tech/AI</span>
-                                </div>
-                                <div class="article-content">
-                                    <h3>The Future of AI Ethics</h3>
-                                    <p>Exploring responsible AI development and implementation</p>
-                                    <div class="article-meta">
-                                        <div class="meta-left">
-                                            <span class="date">Feb 2, 2025</span>
-                                            <span class="read-time">5 min read</span>
-                                        </div>
-                                        <a href="#" class="read-more">Learn More →</a>
-                                    </div>
-                                </div>
-                            </article>
-                            <article class="article-card" data-topic="sustainability">
-                                <div class="article-image" style="background: url('placeholder.svg') center/cover">
-                                    <span class="category-tag">Sustainability</span>
-                                </div>
-                                <div class="article-content">
-                                    <h3>Smart Home Energy Solutions</h3>
-                                    <p>Innovative ways to reduce your carbon footprint</p>
-                                    <div class="article-meta">
-                                        <div class="meta-left">
-                                            <span class="date">Feb 1, 2025</span>
-                                            <span class="read-time">4 min read</span>
-                                        </div>
-                                        <a href="#" class="read-more">Learn More →</a>
-                                    </div>
-                                </div>
-                            </article>
-                            <article class="article-card" data-topic="entrepreneurship">
-                                <div class="article-image" style="background: url('placeholder.svg') center/cover">
-                                    <span class="category-tag">Entrepreneurship</span>
-                                </div>
-                                <div class="article-content">
-                                    <h3>Green Business Models</h3>
-                                    <p>Building sustainable startups for the future</p>
-                                    <div class="article-meta">
-                                        <div class="meta-left">
-                                            <span class="date">Feb 1, 2025</span>
-                                            <span class="read-time">6 min read</span>
-                                        </div>
-                                        <a href="#" class="read-more">Learn More →</a>
-                                    </div>
-                                </div>
-                            </article>
-                            <article class="article-card" data-topic="wellness">
-                                <div class="article-image" style="background: url('placeholder.svg') center/cover">
-                                    <span class="category-tag">Wellness</span>
-                                </div>
-                                <div class="article-content">
-                                    <h3>Digital Wellness Guide</h3>
-                                    <p>Balancing technology use for better mental health</p>
-                                    <div class="article-meta">
-                                        <div class="meta-left">
-                                            <span class="date">Jan 31, 2025</span>
-                                            <span class="read-time">3 min read</span>
-                                        </div>
-                                        <a href="#" class="read-more">Learn More →</a>
-                                    </div>
-                                </div>
-                            </article>
-                            <article class="article-card" data-topic="nufinds">
-                                <div class="article-image" style="background: url('placeholder.svg') center/cover">
-                                    <span class="category-tag">NuFinds</span>
-                                </div>
-                                <div class="article-content">
-                                    <h3>Hidden Tech Gems</h3>
-                                    <p>Undiscovered apps revolutionizing productivity</p>
-                                    <div class="article-meta">
-                                        <div class="meta-left">
-                                            <span class="date">Jan 31, 2025</span>
-                                            <span class="read-time">4 min read</span>
-                                        </div>
-                                        <a href="#" class="read-more">Learn More →</a>
-                                    </div>
-                                </div>
-                            </article>
-                            <article class="article-card" data-topic="tech">
-                                <div class="article-image" style="background: url('placeholder.svg') center/cover">
-                                    <span class="category-tag">Tech/AI</span>
-                                </div>
-                                <div class="article-content">
-                                    <h3>AI in Healthcare</h3>
-                                    <p>How machine learning is transforming medicine</p>
-                                    <div class="article-meta">
-                                        <div class="meta-left">
-                                            <span class="date">Jan 30, 2025</span>
-                                            <span class="read-time">7 min read</span>
-                                        </div>
-                                        <a href="#" class="read-more">Learn More →</a>
-                                    </div>
-                                </div>
-                            </article>
-                            <article class="article-card" data-topic="sustainability">
-                                <div class="article-image" style="background: url('placeholder.svg') center/cover">
-                                    <span class="category-tag">Sustainability</span>
-                                </div>
-                                <div class="article-content">
-                                    <h3>Zero-Waste Living</h3>
-                                    <p>Practical tips for a sustainable lifestyle</p>
-                                    <div class="article-meta">
-                                        <div class="meta-left">
-                                            <span class="date">Jan 29, 2025</span>
-                                            <span class="read-time">5 min read</span>
-                                        </div>
-                                        <a href="#" class="read-more">Learn More →</a>
-                                    </div>
-                                </div>
-                            </article>
-                            <article class="article-card" data-topic="remote-work">
-                                <div class="article-image" style="background: url('placeholder.svg') center/cover">
-                                    <span class="category-tag">Remote Work</span>
-                                </div>
-                                <div class="article-content">
-                                    <h3>Future of Remote Work</h3>
-                                    <p>Technologies shaping distributed teams</p>
-                                    <div class="article-meta">
-                                        <div class="meta-left">
-                                            <span class="date">Jan 28, 2025</span>
-                                            <span class="read-time">4 min read</span>
-                                        </div>
-                                        <a href="#" class="read-more">Learn More →</a>
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
-                        <button class="carousel-btn next">›</button>
-                    </div>
-                </div>
-                </div>
+                <!-- Articles will be dynamically populated -->
             </div>
         </section>
 
-        <section id="newsletter" class="newsletter-section fade-in" aria-labelledby="newsletter-title">
-            <div class="newsletter-content">
-                <div class="newsletter-main">
-                    <h2 id="newsletter-title">Join Our Community of Forward-Thinking Innovators</h2>
-                    <p class="newsletter-description">Get exclusive weekly insights on AI, sustainability, and future tech - curated for curious minds who want to stay ahead.</p>
-                    
-                    <div class="newsletter-preview">
-                        <h3>What You'll Get:</h3>
-                        <ul class="preview-list">
-                            <li>
-                                <span class="preview-icon">🚀</span>
-                                <div class="preview-text">
-                                    <strong>Tech Deep Dives</strong>
-                                    <span>Expert analysis of emerging technologies</span>
-                                </div>
-                            </li>
-                            <li>
-                                <span class="preview-icon">💡</span>
-                                <div class="preview-text">
-                                    <strong>Innovation Spotlights</strong>
-                                    <span>Early access to groundbreaking startups</span>
-                                </div>
-                            </li>
-                            <li>
-                                <span class="preview-icon">🌱</span>
-                                <div class="preview-text">
-                                    <strong>Sustainability Tips</strong>
-                                    <span>Actionable ways to live greener</span>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <form id="newsletter-form" class="newsletter-form">
-                        <input type="email" placeholder="Enter your email address" required>
-                        <button type="submit">Get Free Weekly Insights</button>
-                    </form>
-                    
-                    <div class="newsletter-features">
-                        <div class="feature">
-                            <span class="feature-icon">🎯</span>
-                            <span>Curated Content</span>
-                        </div>
-                        <div class="feature">
-                            <span class="feature-icon">🔒</span>
-                            <span>No Spam Ever</span>
-                        </div>
-                        <div class="feature">
-                            <span class="feature-icon">✨</span>
-                            <span>Cancel Anytime</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="testimonials">
-                    <h3>What Our Readers Say</h3>
-                    <div class="testimonial-grid">
-                        <div class="testimonial-card">
-                            <div class="testimonial-content">
-                                <p>"The weekly tech insights have been invaluable for keeping up with AI trends. Absolutely worth every minute reading!"</p>
-                            </div>
-                            <div class="testimonial-author">
-                                <img src="placeholder.svg" alt="Sarah Chen" class="author-image">
-                                <div class="author-info">
-                                    <strong>Sarah Chen</strong>
-                                    <span>Tech Lead at Future Labs</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="testimonial-card">
-                            <div class="testimonial-content">
-                                <p>"Their sustainability tips helped me transform my startup into a fully eco-conscious business. Game-changing newsletter!"</p>
-                            </div>
-                            <div class="testimonial-author">
-                                <img src="placeholder.svg" alt="Marcus Rodriguez" class="author-image">
-                                <div class="author-info">
-                                    <strong>Marcus Rodriguez</strong>
-                                    <span>Founder, GreenTech Solutions</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <!-- Newsletter Section -->
+        <section id="newsletter" class="newsletter">
+            <h2>Stay Updated</h2>
+            <p>Get the latest insights delivered to your inbox</p>
+            <form class="newsletter__form">
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit">Subscribe</button>
+            </form>
         </section>
     </main>
 
-    <footer class="site-footer" role="contentinfo">
-        <div class="footer-content">
-            <div class="footer-grid">
-                <div class="footer-section">
-                    <h4>About Nuwarez</h4>
-                    <p>Empowering sustainable innovation and mindful living in the digital age.</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer__content">
+            <div class="footer__brand">
+                <img src="favicon.svg" alt="NuWarez Logo" width="32" height="32">
+                <p>NuWarez - Innovation & Technology Hub</p>
+            </div>
+            <div class="footer__links">
+                <div class="footer__column">
+                    <h3>Explore</h3>
                     <ul>
-                        <li><a href="#tech">Tech & AI</a></li>
-                        <li><a href="#sustainability">Sustainability</a></li>
-                        <li><a href="#entrepreneurship">Entrepreneurship</a></li>
-                        <li><a href="#wellness">Wellness</a></li>
-                        <li><a href="#nufinds">NuFinds</a></li>
+                        <li><a href="#featured">Featured</a></li>
+                        <li><a href="#niches">Niches</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#articles">Articles</a></li>
                     </ul>
                 </div>
-                <div class="footer-section">
-                    <h4>Connect</h4>
-                    <div class="social-links">
-                        <a href="#" class="social-link">Twitter</a>
-                        <a href="#" class="social-link">Instagram</a>
-                        <a href="#" class="social-link">LinkedIn</a>
-                    </div>
+                <div class="footer__column">
+                    <h3>Connect</h3>
+                    <ul>
+                        <li><a href="#newsletter">Newsletter</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="#">GitHub</a></li>
+                    </ul>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Nuwarez. All rights reserved.</p>
-            </div>
+        </div>
+        <div class="footer__bottom">
+            <p>&copy; 2025 NuWarez. All rights reserved.</p>
         </div>
     </footer>
-    <button class="back-to-top" aria-label="Back to top">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M18 15l-6-6-6 6"/>
-        </svg>
-    </button>
+
+    <!-- JavaScript Files -->
+    <script src="js/pattern-animations.js"></script>
     <script src="js/scroll-animations.js"></script>
+    <script src="components/navigation/navigation.js"></script>
+    <script src="components/hero/hero.js"></script>
+    <script src="components/featured/featured.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>

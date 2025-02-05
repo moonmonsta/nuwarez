@@ -21,40 +21,47 @@
 
 <canvas id="particleCanvas"></canvas>
 <header class="hero">
-    <nav>
-        <div class="logo">
+    <nav role="navigation" aria-label="Main navigation">
+        <div class="logo" role="banner">
             <?php if (has_custom_logo()): ?>
                 <?php the_custom_logo(); ?>
             <?php else: ?>
-                <a href="<?php echo esc_url(home_url('/')); ?>"><?php bloginfo('name'); ?></a>
+                <a href="<?php echo esc_url(home_url('/')); ?>" aria-label="<?php bloginfo('name'); ?> - Home">
+                    <?php bloginfo('name'); ?>
+                </a>
             <?php endif; ?>
         </div>
         <div class="nav-container">
-            <?php
-            wp_nav_menu(array(
-                'theme_location' => 'primary',
-                'container' => false,
-                'menu_class' => 'nav-links',
-                'fallback_cb' => false
-            ));
-            ?>
-            <div class="search-container">
-                <input type="search" class="search-bar" placeholder="Search..." aria-label="Search">
-                <span class="search-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <ul class="nav-links" role="menubar">
+                <li role="none"><a href="/tech" class="nav-item tech" role="menuitem">Tech</a></li>
+                <li role="none"><a href="/sustainability" class="nav-item sustainability" role="menuitem">Sustainability</a></li>
+                <li role="none"><a href="/entrepreneurship" class="nav-item entrepreneurship" role="menuitem">Entrepreneurship</a></li>
+                <li role="none"><a href="/wellness" class="nav-item wellness" role="menuitem">Wellness</a></li>
+                <li role="none"><a href="/nufinds" class="nav-item nufinds" role="menuitem">NuFinds</a></li>
+            </ul>
+            <a href="/join" class="join-button" role="button">Join Now</a>
+            <form class="search-container" role="search" aria-label="Site">
+                <label class="sr-only" for="search">Search website</label>
+                <input type="search" id="search" class="search-bar" placeholder="Search..." aria-label="Search website">
+                <button type="submit" class="search-submit" aria-label="Submit search">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                         <circle cx="11" cy="11" r="8"/>
                         <path d="m21 21-4.3-4.3"/>
                     </svg>
-                </span>
-            </div>
-            <button class="theme-toggle" aria-label="Toggle theme">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                </button>
+            </form>
+            <button class="theme-toggle" aria-label="Toggle dark/light theme">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                     <circle cx="12" cy="12" r="5"/>
                     <path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
                 </svg>
             </button>
+            <a href="/subscribe" class="cta-button" role="button">Subscribe</a>
         </div>
-        <button class="mobile-menu-btn">☰</button>
+        <button class="mobile-menu-btn" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="nav-container">
+            <span class="sr-only">Menu</span>
+            ☰
+        </button>
     </nav>
     
     <?php if (is_front_page()): ?>

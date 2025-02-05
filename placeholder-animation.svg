@@ -1,0 +1,53 @@
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00ff9d;stop-opacity:0.1"/>
+      <stop offset="100%" style="stop-color:#00d4ff;stop-opacity:0.1"/>
+    </linearGradient>
+    
+    <!-- Particle effect -->
+    <circle id="particle" r="2" fill="#00ff9d">
+      <animate attributeName="opacity" values="0.8;0.2;0.8" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    
+    <!-- Grid line -->
+    <line id="gridLine" x1="0" y1="0" x2="100" y2="100" stroke="#00ff9d" stroke-width="0.5" stroke-opacity="0.2">
+      <animate attributeName="stroke-opacity" values="0.2;0.1;0.2" dur="4s" repeatCount="indefinite"/>
+    </line>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="url(#bg)"/>
+  
+  <!-- Animated grid -->
+  <g>
+    <use href="#gridLine" transform="translate(100,100)">
+      <animateTransform attributeName="transform" type="translate" from="0,0" to="50,50" dur="10s" repeatCount="indefinite"/>
+    </use>
+    <use href="#gridLine" transform="translate(300,200)">
+      <animateTransform attributeName="transform" type="translate" from="0,0" to="-50,50" dur="12s" repeatCount="indefinite"/>
+    </use>
+    <use href="#gridLine" transform="translate(500,300)">
+      <animateTransform attributeName="transform" type="translate" from="0,0" to="50,-50" dur="11s" repeatCount="indefinite"/>
+    </use>
+  </g>
+  
+  <!-- Floating particles -->
+  <g>
+    <use href="#particle" transform="translate(200,150)">
+      <animateTransform attributeName="transform" type="translate" values="200,150; 220,170; 200,150" dur="5s" repeatCount="indefinite"/>
+    </use>
+    <use href="#particle" transform="translate(400,300)">
+      <animateTransform attributeName="transform" type="translate" values="400,300; 420,280; 400,300" dur="6s" repeatCount="indefinite"/>
+    </use>
+    <use href="#particle" transform="translate(600,450)">
+      <animateTransform attributeName="transform" type="translate" values="600,450; 580,430; 600,450" dur="7s" repeatCount="indefinite"/>
+    </use>
+  </g>
+  
+  <!-- Central animated circle -->
+  <circle cx="400" cy="300" r="100" stroke="#00ff9d" stroke-width="2" fill="none" stroke-opacity="0.2">
+    <animate attributeName="r" values="100;120;100" dur="8s" repeatCount="indefinite"/>
+    <animate attributeName="stroke-opacity" values="0.2;0.4;0.2" dur="8s" repeatCount="indefinite"/>
+  </circle>
+</svg>
