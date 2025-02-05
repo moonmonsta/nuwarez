@@ -11,11 +11,9 @@
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="icon" type="image/png" href="favicon.png">
     
-    <!-- Resource Hints -->
+    <!-- Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" href="js/script.js" as="script">
-    <link rel="preload" href="js/scroll-animations.js" as="script">
     
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -26,14 +24,13 @@
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="js/script.js" defer></script>
-    <script src="js/pattern-animations.js" defer></script>
 </head>
 <body>
     <canvas id="particleCanvas"></canvas>
     <header class="hero" role="banner">
         <nav>
             <div class="logo">NuWareZ</div>
-            <button class="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+            <button class="mobile-menu-btn">☰</button>
             <div class="nav-container">
                 <ul class="nav-links">
                     <li><a href="#tech">Tech</a></li>
@@ -44,12 +41,11 @@
                     <li><a href="#articles">Articles</a></li>
                 </ul>
                 <div class="search-container">
-                    <label for="search" class="visually-hidden">Search</label>
-                    <span class="search-icon" aria-hidden="true">🔍</span>
-                    <input type="search" id="search" class="search-bar" placeholder="Search...">
+                    <span class="search-icon">🔍</span>
+                    <input type="search" class="search-bar" placeholder="Search...">
                 </div>
                 <button class="theme-toggle" aria-label="Toggle dark mode">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
                 </button>
@@ -60,19 +56,338 @@
             <h1 data-text="Innovation Meets Purpose">Innovation Meets Purpose</h1>
             <p>Empowering innovators to thrive mindfully and live sustainably.</p>
             <form id="hero-email-form" class="hero-email-form">
-                <label for="hero-email" class="visually-hidden">Email address</label>
-                <input type="email" id="hero-email" placeholder="Enter your email for tech insights" required>
+                <input type="email" placeholder="Enter your email for tech insights" required>
                 <button type="submit" class="cta">Get Started</button>
             </form>
         </div>
     </header>
 
     <main id="main-content" role="main">
-        <!-- Sections will be loaded dynamically -->
-        <div id="featured-section"></div>
-        <div id="about-section"></div>
-        <div id="articles-section"></div>
-        <div id="newsletter-section"></div>
+        <section id="featured" class="featured-section fade-in" aria-labelledby="featured-title">
+            <div class="block-background">
+                <h2 id="featured-title" class="section-title">Featured Topics</h2>
+                <div class="featured-container">
+                <div class="featured-row">
+                    <div class="featured-content">
+                        <article class="featured-card" data-topic="tech">
+                            <span class="topic-tag">Tech/AI</span>
+                            <h3>Technology & AI</h3>
+                            <p>Explore AI ethics, smart home innovations, and robotics trends shaping 2025. Get unbiased reviews and guides for tech that respects people and the planet.</p>
+                            <a href="#" class="read-more">Discover Smarter Tech →</a>
+                        </article>
+                        <article class="featured-card" data-topic="sustainability">
+                            <span class="topic-tag">Sustainability</span>
+                            <h3>Sustainable Living</h3>
+                            <p>Master zero-waste living, renewable energy solutions, and eco-friendly brands. Practical tips for homes, families, and conscious consumers.</p>
+                            <a href="#" class="read-more">Live Greener Now →</a>
+                        </article>
+                        <article class="featured-card" data-topic="entrepreneurship">
+                            <span class="topic-tag">Entrepreneurship</span>
+                            <h3>Entrepreneurial Innovation</h3>
+                            <p>Launch ethical startups, green side hustles, and AI-driven businesses. Trends, tools, and stories for purpose-driven founders.</p>
+                            <a href="#" class="read-more">Build with Purpose →</a>
+                        </article>
+                    </div>
+                    <div class="featured-image" style="background-image: url('placeholder.svg')"></div>
+                </div>
+                <div class="featured-row">
+                    <div class="featured-content">
+                        <article class="featured-card" data-topic="wellness">
+                            <span class="topic-tag">Wellness</span>
+                            <h3>Holistic Wellness</h3>
+                            <p>Upgrade your well-being with mental health tech, ergonomic gear, and digital detox strategies. Science-backed tools for balanced modern living.</p>
+                            <a href="#" class="read-more">Prioritize Wellness →</a>
+                        </article>
+                        <article class="featured-card" data-topic="nufinds">
+                            <span class="topic-tag">NuFinds</span>
+                            <h3>NuFinds</h3>
+                            <p>Unearth quirky tech, under-the-radar apps, and viral life hacks. For the curious minds who love "why didn't I think of that?" moments.</p>
+                            <a href="#" class="read-more">Explore Hidden Gems →</a>
+                        </article>
+                        <article class="featured-card" data-topic="remote-work">
+                            <span class="topic-tag">Remote Work</span>
+                            <h3>Remote & Hybrid Work</h3>
+                            <p>Master productivity with hybrid work tools, burnout prevention strategies, and AI-driven efficiency hacks. Optimize your remote work experience.</p>
+                            <a href="#" class="read-more">Boost Productivity →</a>
+                        </article>
+                    </div>
+                    <div class="featured-image" style="background-image: url('placeholder.svg')"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about-section fade-in" aria-labelledby="about-title">
+            <div class="content-container">
+                <h2 id="about-title" class="section-title">Who We Are</h2>
+                <div class="about-content">
+                    <div class="about-image">
+                        <img src="placeholder.svg" alt="Innovative technology and sustainable living" 
+                             loading="lazy" width="600" height="450"
+                             style="width: 100%; height: 100%; object-fit: cover;">
+                        <div class="about-image-overlay"></div>
+                    </div>
+                    <div class="about-text">
+                        <section class="about-block about-block-1">
+                            <header>
+                                <h3>Your Guide to Innovation</h3>
+                            </header>
+                            <p>Nuwarez is your premier destination for exploring the intersection of technology, sustainability, and mindful living. We curate cutting-edge insights on AI advancements, sustainable practices, and conscious entrepreneurship.</p>
+                        </section>
+                        <section class="about-block about-block-2">
+                            <p>Join our community in discovering how we can leverage innovation for positive change while maintaining digital wellness.</p>
+                        </section>
+                        <section class="about-block about-block-3">
+                            <a href="/about" class="about-link">
+                                Learn more about our mission
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                                    <path d="M1 8h14M8 1l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </a>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="latest-articles" class="articles-section fade-in" aria-labelledby="articles-title">
+            <div class="block-background">
+                <div class="articles-header">
+                <h2 id="articles-title" class="section-title">Popular Articles</h2>
+                <div class="article-filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="tech">Tech</button>
+                    <button class="filter-btn" data-filter="sustainability">Sustainability</button>
+                    <button class="filter-btn" data-filter="entrepreneurship">Business</button>
+                    <button class="filter-btn" data-filter="wellness">Wellness</button>
+                </div>
+            </div>
+            
+            <div class="articles-grid">
+                <div class="main-articles">
+                    <div class="carousel-container">
+                        <button class="carousel-btn prev">‹</button>
+                        <div class="articles-carousel">
+                            <article class="article-card" data-topic="tech">
+                                <div class="article-image" style="background: url('placeholder.svg') center/cover">
+                                    <span class="category-tag">Tech/AI</span>
+                                </div>
+                                <div class="article-content">
+                                    <h3>The Future of AI Ethics</h3>
+                                    <p>Exploring responsible AI development and implementation</p>
+                                    <div class="article-meta">
+                                        <div class="meta-left">
+                                            <span class="date">Feb 2, 2025</span>
+                                            <span class="read-time">5 min read</span>
+                                        </div>
+                                        <a href="#" class="read-more">Learn More →</a>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="article-card" data-topic="sustainability">
+                                <div class="article-image" style="background: url('placeholder.svg') center/cover">
+                                    <span class="category-tag">Sustainability</span>
+                                </div>
+                                <div class="article-content">
+                                    <h3>Smart Home Energy Solutions</h3>
+                                    <p>Innovative ways to reduce your carbon footprint</p>
+                                    <div class="article-meta">
+                                        <div class="meta-left">
+                                            <span class="date">Feb 1, 2025</span>
+                                            <span class="read-time">4 min read</span>
+                                        </div>
+                                        <a href="#" class="read-more">Learn More →</a>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="article-card" data-topic="entrepreneurship">
+                                <div class="article-image" style="background: url('placeholder.svg') center/cover">
+                                    <span class="category-tag">Entrepreneurship</span>
+                                </div>
+                                <div class="article-content">
+                                    <h3>Green Business Models</h3>
+                                    <p>Building sustainable startups for the future</p>
+                                    <div class="article-meta">
+                                        <div class="meta-left">
+                                            <span class="date">Feb 1, 2025</span>
+                                            <span class="read-time">6 min read</span>
+                                        </div>
+                                        <a href="#" class="read-more">Learn More →</a>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="article-card" data-topic="wellness">
+                                <div class="article-image" style="background: url('placeholder.svg') center/cover">
+                                    <span class="category-tag">Wellness</span>
+                                </div>
+                                <div class="article-content">
+                                    <h3>Digital Wellness Guide</h3>
+                                    <p>Balancing technology use for better mental health</p>
+                                    <div class="article-meta">
+                                        <div class="meta-left">
+                                            <span class="date">Jan 31, 2025</span>
+                                            <span class="read-time">3 min read</span>
+                                        </div>
+                                        <a href="#" class="read-more">Learn More →</a>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="article-card" data-topic="nufinds">
+                                <div class="article-image" style="background: url('placeholder.svg') center/cover">
+                                    <span class="category-tag">NuFinds</span>
+                                </div>
+                                <div class="article-content">
+                                    <h3>Hidden Tech Gems</h3>
+                                    <p>Undiscovered apps revolutionizing productivity</p>
+                                    <div class="article-meta">
+                                        <div class="meta-left">
+                                            <span class="date">Jan 31, 2025</span>
+                                            <span class="read-time">4 min read</span>
+                                        </div>
+                                        <a href="#" class="read-more">Learn More →</a>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="article-card" data-topic="tech">
+                                <div class="article-image" style="background: url('placeholder.svg') center/cover">
+                                    <span class="category-tag">Tech/AI</span>
+                                </div>
+                                <div class="article-content">
+                                    <h3>AI in Healthcare</h3>
+                                    <p>How machine learning is transforming medicine</p>
+                                    <div class="article-meta">
+                                        <div class="meta-left">
+                                            <span class="date">Jan 30, 2025</span>
+                                            <span class="read-time">7 min read</span>
+                                        </div>
+                                        <a href="#" class="read-more">Learn More →</a>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="article-card" data-topic="sustainability">
+                                <div class="article-image" style="background: url('placeholder.svg') center/cover">
+                                    <span class="category-tag">Sustainability</span>
+                                </div>
+                                <div class="article-content">
+                                    <h3>Zero-Waste Living</h3>
+                                    <p>Practical tips for a sustainable lifestyle</p>
+                                    <div class="article-meta">
+                                        <div class="meta-left">
+                                            <span class="date">Jan 29, 2025</span>
+                                            <span class="read-time">5 min read</span>
+                                        </div>
+                                        <a href="#" class="read-more">Learn More →</a>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="article-card" data-topic="remote-work">
+                                <div class="article-image" style="background: url('placeholder.svg') center/cover">
+                                    <span class="category-tag">Remote Work</span>
+                                </div>
+                                <div class="article-content">
+                                    <h3>Future of Remote Work</h3>
+                                    <p>Technologies shaping distributed teams</p>
+                                    <div class="article-meta">
+                                        <div class="meta-left">
+                                            <span class="date">Jan 28, 2025</span>
+                                            <span class="read-time">4 min read</span>
+                                        </div>
+                                        <a href="#" class="read-more">Learn More →</a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        <button class="carousel-btn next">›</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="newsletter" class="newsletter-section fade-in" aria-labelledby="newsletter-title">
+            <div class="newsletter-content">
+                <div class="newsletter-main">
+                    <h2 id="newsletter-title">Join Our Community of Forward-Thinking Innovators</h2>
+                    <p class="newsletter-description">Get exclusive weekly insights on AI, sustainability, and future tech - curated for curious minds who want to stay ahead.</p>
+                    
+                    <div class="newsletter-preview">
+                        <h3>What You'll Get:</h3>
+                        <ul class="preview-list">
+                            <li>
+                                <span class="preview-icon">🚀</span>
+                                <div class="preview-text">
+                                    <strong>Tech Deep Dives</strong>
+                                    <span>Expert analysis of emerging technologies</span>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="preview-icon">💡</span>
+                                <div class="preview-text">
+                                    <strong>Innovation Spotlights</strong>
+                                    <span>Early access to groundbreaking startups</span>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="preview-icon">🌱</span>
+                                <div class="preview-text">
+                                    <strong>Sustainability Tips</strong>
+                                    <span>Actionable ways to live greener</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <form id="newsletter-form" class="newsletter-form">
+                        <input type="email" placeholder="Enter your email address" required>
+                        <button type="submit">Get Free Weekly Insights</button>
+                    </form>
+                    
+                    <div class="newsletter-features">
+                        <div class="feature">
+                            <span class="feature-icon">🎯</span>
+                            <span>Curated Content</span>
+                        </div>
+                        <div class="feature">
+                            <span class="feature-icon">🔒</span>
+                            <span>No Spam Ever</span>
+                        </div>
+                        <div class="feature">
+                            <span class="feature-icon">✨</span>
+                            <span>Cancel Anytime</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonials">
+                    <h3>What Our Readers Say</h3>
+                    <div class="testimonial-grid">
+                        <div class="testimonial-card">
+                            <div class="testimonial-content">
+                                <p>"The weekly tech insights have been invaluable for keeping up with AI trends. Absolutely worth every minute reading!"</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <img src="placeholder.svg" alt="Sarah Chen" class="author-image">
+                                <div class="author-info">
+                                    <strong>Sarah Chen</strong>
+                                    <span>Tech Lead at Future Labs</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-card">
+                            <div class="testimonial-content">
+                                <p>"Their sustainability tips helped me transform my startup into a fully eco-conscious business. Game-changing newsletter!"</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <img src="placeholder.svg" alt="Marcus Rodriguez" class="author-image">
+                                <div class="author-info">
+                                    <strong>Marcus Rodriguez</strong>
+                                    <span>Founder, GreenTech Solutions</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer class="site-footer" role="contentinfo">
@@ -106,91 +421,11 @@
             </div>
         </div>
     </footer>
-    
     <button class="back-to-top" aria-label="Back to top">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M18 15l-6-6-6 6"/>
         </svg>
     </button>
-
-    <!-- Core Scripts -->
     <script src="js/scroll-animations.js"></script>
-    <script>
-        // Component Loader
-        const ComponentLoader = {
-            components: [
-                { id: 'featured-section', path: 'components/featured/featured.html' },
-                { id: 'about-section', path: 'components/about/about.html' },
-                { id: 'articles-section', path: 'components/articles/articles.html' },
-                { id: 'newsletter-section', path: 'components/newsletter/newsletter.html' }
-            ],
-
-            init() {
-                this.observer = new IntersectionObserver(this.handleIntersection.bind(this), {
-                    rootMargin: '50px 0px',
-                    threshold: 0.1
-                });
-
-                this.components.forEach(({ id }) => {
-                    const element = document.getElementById(id);
-                    if (element) {
-                        this.observer.observe(element);
-                        // Add loading indicator
-                        element.innerHTML = '<div class="loading-spinner" aria-label="Loading content..."></div>';
-                    }
-                });
-            },
-
-            async handleIntersection(entries) {
-                for (const entry of entries) {
-                    if (entry.isIntersecting) {
-                        const id = entry.target.id;
-                        const component = this.components.find(c => c.id === id);
-                        if (component) {
-                            try {
-                                await this.loadComponent(component);
-                                this.observer.unobserve(entry.target);
-                            } catch (error) {
-                                console.error(`Failed to load component ${id}:`, error);
-                                entry.target.innerHTML = '<div class="error-message">Failed to load content. Please refresh the page.</div>';
-                            }
-                        }
-                    }
-                }
-            },
-
-            async loadComponent({ id, path }) {
-                try {
-                    const response = await fetch(path);
-                    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-                    const html = await response.text();
-                    
-                    const element = document.getElementById(id);
-                    if (element) {
-                        element.innerHTML = html;
-                        
-                        // Load associated script
-                        const scriptPath = path.replace('.html', '.js');
-                        const script = document.createElement('script');
-                        script.src = scriptPath;
-                        script.async = true;
-                        document.body.appendChild(script);
-                        
-                        // Initialize animations
-                        element.querySelectorAll('.fade-in').forEach(el => {
-                            el.classList.add('visible');
-                        });
-                    }
-                } catch (error) {
-                    throw new Error(`Component loading error: ${error.message}`);
-                }
-            }
-        };
-
-        // Initialize on DOMContentLoaded
-        document.addEventListener('DOMContentLoaded', () => {
-            ComponentLoader.init();
-        });
-    </script>
 </body>
 </html>

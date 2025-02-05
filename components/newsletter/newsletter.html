@@ -1,7 +1,7 @@
-<section class="newsletter">
+<section class="newsletter" aria-labelledby="newsletter-title">
     <div class="newsletter__container">
         <div class="newsletter__content">
-            <h2>Stay Updated</h2>
+            <h2 id="newsletter-title">Stay Updated</h2>
             <p>Get the latest insights on technology, sustainability, and modern entrepreneurship delivered to your inbox.</p>
         </div>
         
@@ -17,7 +17,7 @@
                 >
                 <button type="submit" class="newsletter__submit">
                     Subscribe
-                    <span class="newsletter__submit-icon">→</span>
+                    <span class="newsletter__submit-icon" aria-hidden="true">→</span>
                 </button>
             </div>
             <div class="newsletter__message" aria-live="polite"></div>
@@ -26,5 +26,31 @@
                 <span>I agree to receive newsletters and accept the data privacy statement.</span>
             </label>
         </form>
+
+        <div class="newsletter__features" aria-label="Newsletter benefits">
+            <ul class="features__list">
+                <li class="feature__item">
+                    <span class="feature__icon" aria-hidden="true">🎯</span>
+                    <div class="feature__content">
+                        <h3 class="feature__title">Curated Content</h3>
+                        <p class="feature__description">Hand-picked insights from industry experts</p>
+                    </div>
+                </li>
+                <li class="feature__item">
+                    <span class="feature__icon" aria-hidden="true">🔒</span>
+                    <div class="feature__content">
+                        <h3 class="feature__title">No Spam Ever</h3>
+                        <p class="feature__description">Only valuable content, delivered weekly</p>
+                    </div>
+                </li>
+                <li class="feature__item">
+                    <span class="feature__icon" aria-hidden="true">✨</span>
+                    <div class="feature__content">
+                        <h3 class="feature__title">Cancel Anytime</h3>
+                        <p class="feature__description">Easy unsubscribe with one click</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
     </div>
 </section>

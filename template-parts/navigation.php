@@ -6,23 +6,10 @@
  */
 ?>
 
-<header class="main-header">
-    <nav class="main-nav">
-        <a href="<?php echo esc_url(home_url('/')); ?>" class="logo">
-            <?php 
-            $custom_logo_id = get_theme_mod('custom_logo');
-            if ($custom_logo_id) {
-                echo wp_get_attachment_image($custom_logo_id, 'full', false, array(
-                    'width' => 40,
-                    'height' => 40,
-                    'alt' => get_bloginfo('name')
-                ));
-            } else {
-                ?>
-                <img src="<?php echo esc_url(get_template_directory_uri() . '/favicon.svg'); ?>" alt="<?php echo esc_attr(get_bloginfo('name')); ?>" width="40" height="40">
-            <?php } ?>
-            <?php bloginfo('name'); ?>
-        </a>
+<nav>
+    <div class="logo"><?php bloginfo('name'); ?></div>
+    <button class="mobile-menu-btn">☰</button>
+    <div class="nav-container">
         <?php
         if (has_nav_menu('primary')) {
             wp_nav_menu(array(
@@ -35,11 +22,23 @@
         } else {
         ?>
             <ul class="nav-links">
-                <li><a href="#featured"><?php esc_html_e('Featured', 'nuwarez'); ?></a></li>
-                <li><a href="#about"><?php esc_html_e('About', 'nuwarez'); ?></a></li>
+                <li><a href="#tech"><?php esc_html_e('Tech', 'nuwarez'); ?></a></li>
+                <li><a href="#sustainability"><?php esc_html_e('Sustainability', 'nuwarez'); ?></a></li>
+                <li><a href="#entrepreneurship"><?php esc_html_e('Entrepreneurship', 'nuwarez'); ?></a></li>
+                <li><a href="#wellness"><?php esc_html_e('Wellness', 'nuwarez'); ?></a></li>
+                <li><a href="#nufinds"><?php esc_html_e('NuFinds', 'nuwarez'); ?></a></li>
                 <li><a href="#articles"><?php esc_html_e('Articles', 'nuwarez'); ?></a></li>
-                <li><a href="#newsletter" class="cta-button"><?php esc_html_e('Subscribe', 'nuwarez'); ?></a></li>
             </ul>
         <?php } ?>
-    </nav>
-</header>
+        <div class="search-container">
+            <span class="search-icon">🔍</span>
+            <input type="search" class="search-bar" placeholder="<?php esc_attr_e('Search...', 'nuwarez'); ?>">
+            <div class="search-results" style="display: none;"></div>
+        </div>
+        <button class="theme-toggle" aria-label="<?php esc_attr_e('Toggle dark mode', 'nuwarez'); ?>">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+            </svg>
+        </button>
+    </div>
+</nav>
