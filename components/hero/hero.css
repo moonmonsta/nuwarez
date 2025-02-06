@@ -1,41 +1,115 @@
 .hero {
-  padding: clamp(var(--spacing-xl), 5vw, var(--spacing-2xl));
+  position: relative;
+  padding: clamp(var(--spacing-lg), 4vw, var(--spacing-xl));
   color: var(--text-primary);
   display: flex;
+  flex-direction: column;
   align-items: center;
-  margin: clamp(var(--spacing-2xl), 8vw, var(--spacing-3xl)) auto;
-  max-width: min(90%, 1200px);
-  position: relative;
+  margin: clamp(4rem, 10vw, 6rem) auto;
+  max-width: 90%;
   background: rgba(var(--emerald-rgb), 0.05);
-  /* Optimize performance by conditionally applying backdrop-filter */
   transform: translateZ(0);
-  @supports (backdrop-filter: blur(8px)) {
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-  }
-  border: 1px solid rgba(var(--emerald-rgb), 0.1);
-  border-radius: var(--border-radius-2xl);
-  /* Simplified box-shadow */
-  box-shadow: 0 0 30px rgba(var(--emerald-rgb), 0.15);
-  overflow: hidden;
-  z-index: 1;
 }
 
-.hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  /* Simplified gradient effect */
-  background: linear-gradient(135deg, 
-    rgba(var(--emerald-rgb), 0.15) 0%, 
-    rgba(var(--emerald-rgb), 0.05) 50%,
-    transparent 100%
-  );
-  z-index: -1;
-  opacity: 0.8;
-  /* Use more performant mask property */
-  -webkit-mask: radial-gradient(circle at center, black 30%, transparent 70%);
-  mask: radial-gradient(circle at center, black 30%, transparent 70%);
+/* Only apply backdrop-filter if supported */
+@supports (backdrop-filter: blur(8px)) {
+  .hero {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: var(--border-radius-2xl);
+    box-shadow: 0 0 30px rgba(var(--emerald-rgb), 0.15);
+  }
+}
+
+.hero-brand {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 900;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 0 45px rgba(0, 255, 157, 0.8);
+  animation: emeraldGlow 3s ease-in-out infinite;
+}
+
+@keyframes emeraldGlow {
+  0% { text-shadow: 0 0 45px rgba(0, 255, 157, 0.8); }
+  50% { text-shadow: 0 0 60px rgba(0, 255, 157, 1); }
+  100% { text-shadow: 0 0 45px rgba(0, 255, 157, 0.8); }
+}
+
+.hero-content {
+  text-align: center;
+  max-width: 90%;
+}
+
+.hero-content h2 {
+  font-size: clamp(1.75rem, 4vw, 3rem);
+  margin-bottom: 1rem;
+  font-weight: 700;
+  line-height: 1.2;
+  background: linear-gradient(135deg, var(--emerald) 0%, var(--secondary) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-content p {
+  font-size: clamp(1.1rem, 2vw, 1.25rem);
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+  max-width: min(600px, 90%);
+  margin: 0 auto 2rem;
+}
+
+.hero-email-form {
+  position: relative;
+  background: rgba(0, 20, 15, 0.2);
+  padding: clamp(0.75rem, 2vw, 1rem);
+  border-radius: 30px;
+  display: flex;
+  gap: 1rem;
+  width: 90%;
+  margin: 0 auto;
+  border: 1px solid rgba(var(--emerald-rgb), 0.1);
+}
+
+.hero-email-form input {
+  flex: 1;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid rgba(0, 255, 157, 0.2);
+  border-radius: 25px;
+  background: rgba(0, 20, 15, 0.3);
+  color: var(--text-primary);
+  font-size: 1rem;
+  min-width: 0; /* Prevents flex item from overflowing */
+}
+
+.hero-email-form input:focus {
+  outline: none;
+  border-color: rgba(0, 255, 157, 0.4);
+}
+
+.hero-email-form button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 25px;
+  background: linear-gradient(135deg, var(--emerald) 0%, var(--secondary) 100%);
+  color: var(--darker-bg);
+  font-weight: 600;
+  white-space: nowrap;
+  transition: transform 0.2s ease;
+}
+
+.hero-email-form button:hover {
+  transform: translateY(-1px);
+}
+
+.form-message {
+  margin-top: 1rem;
+  min-height: 20px;
 }
 
 #heroParticleCanvas {
@@ -44,178 +118,26 @@
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1;
+  z-index: 0;
   pointer-events: none;
 }
 
-.hero-content {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  padding: var(--spacing-2xl) var(--spacing-lg);
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-/* Optimized animations with reduced motion support */
-@media (prefers-reduced-motion: no-preference) {
-  .hero-content > * {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s ease-out, transform 0.5s cubic-bezier(0.2, 0, 0.15, 1);
-  }
-
-  .hero-content > *.revealed {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* Optimized staggered animations */
-  .hero-content .hero-brand.revealed { transition-delay: 100ms; }
-  .hero-content h1.revealed { transition-delay: 200ms; }
-  .hero-content p.revealed { transition-delay: 300ms; }
-  .hero-content .hero-email-form.revealed { transition-delay: 400ms; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-content > * {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-}
-
-.hero-brand {
-  font-family: 'Orbitron', sans-serif;
-  font-weight: 900;
-  font-size: clamp(1.75rem, 4vw, 3.5rem);
-  margin-bottom: clamp(0.75rem, 2vw, 1rem);
-  color: var(--primary);
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  /* Simplified text shadow */
-  text-shadow: 0 0 25px rgba(0, 255, 157, 0.5);
-  background: linear-gradient(to right, var(--primary), var(--secondary));
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  transform: translateZ(0) skew(-5deg);
-}
-
-.hero h1 {
-  font-size: clamp(1.5rem, 3.5vw, 2.5rem);
-  margin-bottom: clamp(1rem, 3vw, 1.5rem);
-  font-family: var(--font-heading);
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  line-height: 1.3;
-  color: var(--text-primary);
-  text-shadow: 0 2px 15px rgba(0, 0, 0, 0.6);
-  position: relative;
-}
-
-.hero p {
-  font-size: clamp(0.9375rem, 1.1vw, 1.1rem);
-  margin-bottom: clamp(1.75rem, 4vw, 2.5rem);
-  max-width: min(700px, 90%);
-  margin-left: auto;
-  margin-right: auto;
-  line-height: 1.7;
-}
-
-/* Hero Email Form */
-.hero-email-form {
-  position: relative;
-  background: rgba(0, 20, 15, 0.2);
-  padding: clamp(0.5rem, 2vw, 0.75rem);
-  border-radius: 30px;
-  /* Only apply backdrop-filter if supported */
-  @supports (backdrop-filter: blur(10px)) {
-    backdrop-filter: blur(10px);
-  }
-  border: 1px solid rgba(0, 255, 157, 0.1);
-  display: inline-flex;
-  gap: clamp(0.5rem, 2vw, 0.75rem);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-}
-
-.hero-email-form input {
-  padding: clamp(0.875rem, 2vw, 1rem) clamp(1.25rem, 3vw, 1.75rem);
-  border: 2px solid rgba(0, 255, 157, 0.2);
-  border-radius: 25px;
-  background: rgba(0, 20, 15, 0.3);
-  color: var(--text-primary);
-  width: clamp(280px, 50vw, 350px);
-  transition: all 0.3s ease;
-  font-size: clamp(0.875rem, 1.1vw, 0.95rem);
-  min-height: 48px; /* Minimum touch target size */
-}
-
-.hero-email-form input:focus {
-  border-color: var(--primary);
-  outline: none;
-  box-shadow: 0 0 20px rgba(0, 255, 157, 0.2);
-}
-
-.hero-email-form button {
-  padding: clamp(0.875rem, 2vw, 1rem) clamp(1.25rem, 3vw, 1.75rem);
-  border: none;
-  border-radius: 25px;
-  background: linear-gradient(135deg, var(--emerald) 0%, var(--secondary) 100%);
-  color: var(--darker-bg);
-  font-weight: 600;
-  font-size: clamp(0.875rem, 1.1vw, 0.95rem);
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  outline: none;
-  min-width: clamp(120px, 30vw, 150px);
-  min-height: 48px; /* Minimum touch target size */
-  box-shadow: 0 0 15px rgba(var(--emerald-rgb), 0.3);
-}
-
-.hero-email-form button:hover,
-.hero-email-form button:focus {
-  background: linear-gradient(135deg, var(--secondary) 0%, var(--emerald) 100%);
-  transform: translateY(-2px);
-  box-shadow: 0 0 25px rgba(var(--emerald-rgb), 0.5);
-}
-
-/* Responsive Hero */
+/* Mobile Optimizations */
 @media (max-width: 768px) {
-  .hero-content {
-    padding: clamp(2rem, 6vw, 4rem) 0;
-  }
-
   .hero-email-form {
-    display: flex;
     flex-direction: column;
-    align-items: stretch;
-    gap: clamp(0.75rem, 2vw, 1rem);
     width: min(100%, 350px);
-    margin: 0 auto;
-    padding: clamp(0.75rem, 2vw, 1rem);
-  }
-
-  .hero-email-form input {
-    width: 100%;
-    margin: 0;
-    font-size: 16px; /* Prevent iOS zoom on focus */
-  }
-
-  .hero-email-form button {
-    width: 100%;
-    padding: 0.875rem;
-    height: 48px; /* Consistent touch target size */
-  }
-}
-
-/* Dark Mode Support */
-@media (prefers-color-scheme: dark) {
-  .hero-email-form input {
-    background: rgba(0, 20, 15, 0.5);
   }
   
-  .social-proof {
-    background: rgba(0, 20, 15, 0.4);
+  .hero-email-form button {
+    width: 100%;
+  }
+  
+  .hero-content h2 {
+    font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+  }
+  
+  .hero-content p {
+    font-size: 1rem;
   }
 }

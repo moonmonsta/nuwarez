@@ -1,220 +1,219 @@
-// Performance monitoring
-const perfMetrics = {
-    firstPaint: 0,
-    firstContentfulPaint: 0,
-    timeToInteractive: 0
+// Performance Monitoring & Component Initialization
+document.addEventListener('DOMContentLoaded', () => {
+    initHero();
+    recordPerformanceMetrics();
+});
+
+const initHero = () => {
+    initParticles();
+    initFormHandling();
+    initRevealAnimations();
 };
 
-// Record performance metrics
-const recordPerfMetrics = () => {
+// Performance Metrics
+const recordPerformanceMetrics = () => {
+    if (!window.performance || !window.performance.getEntriesByType) return;
+    
     const paint = performance.getEntriesByType('paint');
+    const metrics = {
+        firstPaint: 0,
+        firstContentfulPaint: 0,
+        timeToInteractive: performance.now()
+    };
+
     paint.forEach(entry => {
         if (entry.name === 'first-paint') {
-            perfMetrics.firstPaint = entry.startTime;
+            metrics.firstPaint = entry.startTime;
         }
         if (entry.name === 'first-contentful-paint') {
-            perfMetrics.firstContentfulPaint = entry.startTime;
+            metrics.firstContentfulPaint = entry.startTime;
         }
     });
-    perfMetrics.timeToInteractive = performance.now();
-    console.debug('Performance metrics:', perfMetrics);
+
+    console.debug('Performance metrics:', metrics);
 };
 
-// Intersection Observer for reveal animations
-const observeHeroElements = () => {
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('revealed');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, {
-        threshold: 0.2,
-        rootMargin: '50px'
-    });
+// Optimized Intersection Observer
+const initRevealAnimations = () => {
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                    observer.unobserve(entry.target);
+                }
+            });
+        },
+        { threshold: 0.2, rootMargin: '50px' }
+    );
 
-    const heroContent = document.querySelector('.hero-content');
-    if (heroContent) {
-        Array.from(heroContent.children).forEach(element => {
-            observer.observe(element);
-        });
-    }
+    document.querySelectorAll('.hero-content > *').forEach(el => observer.observe(el));
 };
 
-// Particle Canvas Implementation
-class ParticleCanvas {
-    constructor() {
-        this.canvas = document.getElementById('heroParticleCanvas');
-        if (!this.canvas) return;
+// Form Handling with Error States
+const initFormHandling = () => {
+    const form = document.getElementById('hero-email-form');
+    if (!form) return;
 
-        this.ctx = this.canvas.getContext('2d');
-        this.particles = [];
-        this.animationFrame = null;
-        this.isSupported = this.checkSupport();
-        
-        if (this.isSupported) {
-            this.init();
-        } else {
-            this.showFallback();
-        }
-    }
+    const emailInput = form.querySelector('input[type="email"]');
+    const submitButton = form.querySelector('button[type="submit"]');
+    const statusElement = document.getElementById('form-status');
 
-    checkSupport() {
-        return !!(this.canvas && this.ctx && window.requestAnimationFrame);
-    }
-
-    showFallback() {
-        this.canvas.style.display = 'none';
-    }
-
-    init() {
-        this.resize();
-        window.addEventListener('resize', () => this.resize(), { passive: true });
-        this.createParticles();
-        this.animate();
-    }
-
-    resize() {
-        const rect = this.canvas.parentElement.getBoundingClientRect();
-        this.canvas.width = rect.width;
-        this.canvas.height = rect.height;
-    }
-
-    createParticles() {
-        const particleCount = Math.min(50, Math.floor(this.canvas.width * 0.05));
-        this.particles = Array.from({ length: particleCount }, () => ({
-            x: Math.random() * this.canvas.width,
-            y: Math.random() * this.canvas.height,
-            size: Math.random() * 2 + 1,
-            speedX: Math.random() * 0.5 - 0.25,
-            speedY: Math.random() * 0.5 - 0.25,
-            opacity: Math.random() * 0.5 + 0.25
-        }));
-    }
-
-    animate() {
-        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        
-        this.particles.forEach(particle => {
-            particle.x += particle.speedX;
-            particle.y += particle.speedY;
-
-            if (particle.x < 0) particle.x = this.canvas.width;
-            if (particle.x > this.canvas.width) particle.x = 0;
-            if (particle.y < 0) particle.y = this.canvas.height;
-            if (particle.y > this.canvas.height) particle.y = 0;
-
-            this.ctx.beginPath();
-            this.ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-            this.ctx.fillStyle = `rgba(0, 255, 157, ${particle.opacity})`;
-            this.ctx.fill();
-        });
-
-        this.animationFrame = requestAnimationFrame(() => this.animate());
-    }
-
-    cleanup() {
-        if (this.animationFrame) {
-            cancelAnimationFrame(this.animationFrame);
-        }
-    }
-}
-
-// Form handling with improved validation and accessibility
-class HeroForm {
-    constructor(formId) {
-        this.form = document.getElementById(formId);
-        if (!this.form) return;
-
-        this.emailInput = this.form.querySelector('input[type="email"]');
-        this.submitButton = this.form.querySelector('button[type="submit"]');
-        this.statusElement = document.getElementById('form-status');
-        
-        this.setupEventListeners();
-    }
-
-    setupEventListeners() {
-        this.form.addEventListener('submit', (e) => this.handleSubmit(e));
-        this.emailInput?.addEventListener('input', () => this.validateEmail());
-    }
-
-    validateEmail() {
-        const isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.emailInput.value);
-        this.emailInput.setAttribute('aria-invalid', (!isValid).toString());
+    const validateEmail = () => {
+        const isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value);
+        emailInput.setAttribute('aria-invalid', (!isValid).toString());
         return isValid;
-    }
+    };
 
-    async handleSubmit(e) {
+    const setLoading = (isLoading) => {
+        emailInput.disabled = isLoading;
+        submitButton.disabled = isLoading;
+        submitButton.textContent = isLoading ? 'Sending...' : 'Start Your Journey';
+        submitButton.setAttribute('aria-busy', isLoading.toString());
+    };
+
+    const showStatus = (message, type) => {
+        if (!statusElement) return;
+        statusElement.textContent = message;
+        statusElement.className = `form-message ${type}`;
+        statusElement.style.opacity = '1';
+        setTimeout(() => statusElement.style.opacity = '0', 5000);
+    };
+
+    form.addEventListener('submit', async (e) => {
         e.preventDefault();
         
-        if (!this.validateEmail()) {
-            this.showMessage('Please enter a valid email address', 'error');
+        if (!validateEmail()) {
+            showStatus('Please enter a valid email address', 'error');
             return;
         }
 
-        this.setLoading(true);
-
+        setLoading(true);
         try {
             const response = await fetch('/api/subscribe', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email: this.emailInput.value })
+                body: JSON.stringify({ email: emailInput.value })
             });
 
             if (response.ok) {
-                this.showMessage('Thank you for subscribing!', 'success');
-                this.emailInput.value = '';
+                showStatus('Thank you for subscribing!', 'success');
+                emailInput.value = '';
             } else {
                 throw new Error('Subscription failed');
             }
         } catch (error) {
             console.error('Subscription error:', error);
-            this.showMessage('Something went wrong. Please try again.', 'error');
+            showStatus('Something went wrong. Please try again.', 'error');
         } finally {
-            this.setLoading(false);
+            setLoading(false);
         }
-    }
-
-    setLoading(isLoading) {
-        this.emailInput.disabled = isLoading;
-        this.submitButton.disabled = isLoading;
-        this.submitButton.textContent = isLoading ? 'Sending...' : 'Get Started';
-        
-        if (isLoading) {
-            this.submitButton.setAttribute('aria-busy', 'true');
-        } else {
-            this.submitButton.removeAttribute('aria-busy');
-        }
-    }
-
-    showMessage(message, type) {
-        if (!this.statusElement) return;
-        
-        this.statusElement.textContent = message;
-        this.statusElement.className = `form-message ${type}`;
-        this.statusElement.style.opacity = '1';
-
-        setTimeout(() => {
-            this.statusElement.style.opacity = '0';
-        }, 5000);
-    }
-}
-
-// Initialize everything when DOM is ready
-document.addEventListener('DOMContentLoaded', () => {
-    // Initialize components
-    observeHeroElements();
-    const particles = new ParticleCanvas();
-    const form = new HeroForm('hero-email-form');
-
-    // Record performance metrics
-    if (window.performance && window.performance.getEntriesByType) {
-        recordPerfMetrics();
-    }
-
-    // Cleanup on page unload
-    window.addEventListener('unload', () => {
-        particles?.cleanup();
     });
-});
+
+    emailInput.addEventListener('input', validateEmail);
+};
+
+// Particle Animation with Performance Optimizations
+const initParticles = () => {
+    const canvas = document.getElementById('heroParticleCanvas');
+    if (!canvas || !canvas.getContext) return;
+
+    const ctx = canvas.getContext('2d');
+    const particles = [];
+    let animationFrame = null;
+    let mouseX = null;
+    let mouseY = null;
+    let isHovered = false;
+
+    const resize = () => {
+        const rect = canvas.parentElement.getBoundingClientRect();
+        canvas.width = rect.width;
+        canvas.height = rect.height;
+    };
+
+    const createParticles = () => {
+        const particleCount = 30; // Optimized count
+        for (let i = 0; i < particleCount; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                size: Math.random() * 2 + 1,
+                speedX: Math.random() * 0.3 - 0.15,
+                speedY: Math.random() * 0.3 - 0.15,
+                opacity: Math.random() * 0.5 + 0.25,
+                baseSpeedX: 0,
+                baseSpeedY: 0
+            });
+        }
+    };
+
+    const animate = () => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        particles.forEach(particle => {
+            if (particle.baseSpeedX === 0) {
+                particle.baseSpeedX = particle.speedX;
+                particle.baseSpeedY = particle.speedY;
+            }
+
+            if (isHovered && mouseX !== null) {
+                const dx = mouseX - particle.x;
+                const dy = mouseY - particle.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                const maxDistance = 100;
+
+                if (distance < maxDistance) {
+                    const force = (1 - distance / maxDistance) * 0.2;
+                    particle.speedX = particle.baseSpeedX + (dx / distance) * force;
+                    particle.speedY = particle.baseSpeedY + (dy / distance) * force;
+                } else {
+                    particle.speedX = particle.speedX * 0.95 + particle.baseSpeedX * 0.05;
+                    particle.speedY = particle.speedY * 0.95 + particle.baseSpeedY * 0.05;
+                }
+            }
+
+            particle.x += particle.speedX;
+            particle.y += particle.speedY;
+
+            if (particle.x < 0) particle.x = canvas.width;
+            if (particle.x > canvas.width) particle.x = 0;
+            if (particle.y < 0) particle.y = canvas.height;
+            if (particle.y > canvas.height) particle.y = 0;
+
+            ctx.beginPath();
+            ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(0, 255, 157, ${particle.opacity})`;
+            ctx.fill();
+        });
+
+        animationFrame = requestAnimationFrame(animate);
+    };
+
+    // Event Listeners
+    window.addEventListener('resize', resize, { passive: true });
+    
+    canvas.addEventListener('mousemove', (e) => {
+        const rect = canvas.getBoundingClientRect();
+        mouseX = e.clientX - rect.left;
+        mouseY = e.clientY - rect.top;
+        isHovered = true;
+    }, { passive: true });
+
+    canvas.addEventListener('mouseleave', () => {
+        isHovered = false;
+        mouseX = null;
+        mouseY = null;
+    }, { passive: true });
+
+    // Cleanup function
+    window.addEventListener('unload', () => {
+        if (animationFrame) {
+            cancelAnimationFrame(animationFrame);
+        }
+    });
+
+    // Initialize
+    resize();
+    createParticles();
+    animate();
+};
