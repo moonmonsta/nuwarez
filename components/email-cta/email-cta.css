@@ -59,25 +59,82 @@
     padding: 0.5rem;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+}
+
+.email-cta__input-wrapper {
+    flex: 1;
+    position: relative;
 }
 
 .email-cta__input {
-    flex: 1;
+    width: 100%;
     padding: 0.75rem 1rem;
+    padding-right: 2.5rem;
     border: 1px solid var(--color-border);
     border-radius: 6px;
     font-size: 1rem;
     color: var(--color-text);
     background: var(--color-background);
-    transition: border-color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .email-cta__input:focus {
     outline: none;
     border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(var(--ruby), 0.1);
+}
+
+.email-cta__input.is-invalid {
+    border-color: var(--color-error, #dc3545);
+}
+
+.email-cta__input.is-valid {
+    border-color: var(--color-success, #28a745);
+}
+
+.email-cta__validation-icon {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.email-cta__input.is-valid + .email-cta__validation-icon::before {
+    content: '✓';
+    color: var(--color-success, #28a745);
+    opacity: 1;
+}
+
+.email-cta__input.is-invalid + .email-cta__validation-icon::before {
+    content: '!';
+    color: var(--color-error, #dc3545);
+    opacity: 1;
+}
+
+.email-cta__error {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    margin-top: 0.25rem;
+    font-size: 0.875rem;
+    color: var(--color-error, #dc3545);
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+}
+
+.email-cta__error.is-visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .email-cta__button {
+    position: relative;
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
@@ -89,20 +146,130 @@
     font-size: 1rem;
     font-weight: 500;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    transition: all 0.3s ease;
+    min-width: 120px;
+    justify-content: center;
 }
 
-.email-cta__button:hover {
+.email-cta__button:not(:disabled):hover {
     background: var(--color-primary-dark);
     transform: translateY(-1px);
 }
 
-.email-cta__button svg {
-    transition: transform 0.3s ease;
+.email-cta__button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
 }
 
-.email-cta__button:hover svg {
+.email-cta__button-text {
+    transition: opacity 0.3s ease;
+}
+
+.email-cta__spinner {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 24px;
+    height: 24px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.email-cta__spinner svg {
+    animation: spin 1s linear infinite;
+}
+
+.email-cta__button.is-loading .email-cta__button-text,
+.email-cta__button.is-loading .email-cta__arrow {
+    opacity: 0;
+}
+
+.email-cta__button.is-loading .email-cta__spinner {
+    opacity: 1;
+}
+
+.email-cta__arrow {
+    transition: all 0.3s ease;
+}
+
+.email-cta__button:not(:disabled):hover .email-cta__arrow {
     transform: translateX(4px);
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.email-cta__consent {
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+.email-cta__checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.email-cta__checkbox {
+    margin-top: 0.25rem;
+}
+
+.email-cta__checkbox-text {
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+    line-height: 1.4;
+}
+
+.email-cta__link {
+    color: var(--color-primary);
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+.email-cta__link:hover {
+    color: var(--color-primary-dark);
+}
+
+.email-cta__gdpr-notice {
+    font-size: 0.75rem;
+    color: var(--color-text-light);
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+.email-cta__status {
+    min-height: 24px;
+    font-size: 0.875rem;
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+.email-cta__status.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.email-cta__status.is-success {
+    color: var(--color-success, #28a745);
+}
+
+.email-cta__status.is-error {
+    color: var(--color-error, #dc3545);
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+.email-cta__form.is-error .email-cta__input-group {
+    animation: shake 0.5s ease;
 }
 
 @media (max-width: 768px) {

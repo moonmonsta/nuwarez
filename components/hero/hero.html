@@ -1,18 +1,95 @@
-<section class="hero">
+<header class="hero" role="banner">
+    <nav aria-label="Breadcrumb" class="breadcrumb">
+        <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+                <meta itemprop="position" content="1" />
+            </li>
+        </ol>
+    </nav>
+
+    <canvas id="heroParticleCanvas" aria-hidden="true" loading="lazy"></canvas>
+    
     <div class="hero-content">
-        <div class="hero-brand">NuWareZ</div>
-        <h1 data-text="Innovation Meets Purpose">Innovation Meets Purpose</h1>
+        <h1 class="hero-brand" itemprop="headline">NUWAREZ</h1>
+        <h2 class="hero-tagline">Smart Living. Sustainable Future.</h2>
         <p>Empowering innovators to thrive mindfully and live sustainably.</p>
-        <form id="hero-email-form" class="hero-email-form">
-            <input 
-                type="email" 
-                placeholder="Enter your email for tech insights" 
-                required
-                aria-label="Email subscription"
+        
+        <form id="hero-email-form" class="hero-email-form" aria-describedby="form-status">
+            <div class="input-wrapper">
+                <label for="hero-email" class="visually-hidden">Email address for tech insights subscription</label>
+                <input 
+                    id="hero-email"
+                    type="email" 
+                    name="email"
+                    placeholder="Enter your email for tech insights" 
+                    required
+                    aria-required="true"
+                    aria-invalid="false"
+                    autocomplete="email"
+                >
+            </div>
+            <button 
+                type="submit" 
+                class="cta"
+                aria-label="Subscribe to newsletter"
             >
-            <button type="submit" class="cta">
                 Get Started
             </button>
+            <div id="form-status" class="form-message" role="status" aria-live="polite"></div>
         </form>
     </div>
-</section>
+
+    <!-- Schema.org markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "NUWAREZ",
+        "description": "Discover sustainable tech solutions and mindful entrepreneurship resources at NuWarez. Get practical insights for smart living and purposeful innovation.",
+        "url": "https://nuwarez.com",
+        "sameAs": [
+            "https://twitter.com/nuwarez",
+            "https://linkedin.com/company/nuwarez"
+        ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "NUWAREZ",
+        "url": "https://nuwarez.com",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://nuwarez.com/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "NewsArticle",
+        "headline": "Smart Living. Sustainable Future.",
+        "description": "Discover sustainable tech solutions and mindful entrepreneurship resources at NuWarez. Get practical insights for smart living and purposeful innovation.",
+        "image": "https://nuwarez.com/images/hero-image.jpg",
+        "author": {
+            "@type": "Organization",
+            "name": "NUWAREZ"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "NUWAREZ",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://nuwarez.com/images/logo.png"
+            }
+        },
+        "datePublished": "2024-02-06",
+        "dateModified": "2024-02-06"
+    }
+    </script>
+</header>

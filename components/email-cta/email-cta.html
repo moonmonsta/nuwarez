@@ -2,16 +2,45 @@
     <div class="email-cta__container">
         <h2 class="email-cta__title">Stay Ahead of Innovation</h2>
         <p class="email-cta__description">Get weekly insights on technology, sustainability, and mindful living.</p>
-        <form class="email-cta__form">
+        <form class="email-cta__form" novalidate>
             <div class="email-cta__input-group">
-                <input type="email" class="email-cta__input" placeholder="Enter your email" required>
-                <button type="submit" class="email-cta__button">
-                    Subscribe
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <div class="email-cta__input-wrapper">
+                    <input 
+                        type="email" 
+                        class="email-cta__input" 
+                        placeholder="Enter your email" 
+                        required
+                        aria-label="Email address"
+                        aria-describedby="email-error"
+                    >
+                    <div class="email-cta__validation-icon"></div>
+                    <div id="email-error" class="email-cta__error" aria-live="polite"></div>
+                </div>
+                <button type="submit" class="email-cta__button" aria-label="Subscribe to newsletter">
+                    <span class="email-cta__button-text">Subscribe</span>
+                    <div class="email-cta__spinner" aria-hidden="true">
+                        <svg viewBox="0 0 50 50" aria-hidden="true">
+                            <circle cx="25" cy="25" r="20" fill="none" stroke="currentColor" stroke-width="5"></circle>
+                        </svg>
+                    </div>
+                    <svg class="email-cta__arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                         <path d="M1 8h14M8 1l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                     </svg>
                 </button>
             </div>
+            <div class="email-cta__consent">
+                <label class="email-cta__checkbox-label">
+                    <input type="checkbox" class="email-cta__checkbox" required>
+                    <span class="email-cta__checkbox-text">
+                        I agree to receive marketing emails and accept the 
+                        <a href="/privacy-policy" class="email-cta__link">Privacy Policy</a>
+                    </span>
+                </label>
+            </div>
+            <div class="email-cta__gdpr-notice">
+                Your data will be processed in accordance with our Privacy Policy. You can unsubscribe at any time.
+            </div>
+            <div class="email-cta__status" aria-live="polite"></div>
         </form>
     </div>
 </section>

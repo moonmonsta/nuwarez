@@ -1,5 +1,159 @@
 <?php
 /**
+ * Analytics Integration
+ */
+function nuwarez_enqueue_analytics() {
+    // Enqueue web-vitals for Core Web Vitals tracking
+    wp_enqueue_script(
+        'web-vitals',
+        'https://unpkg.com/web-vitals/dist/web-vitals.iife.js',
+        array(),
+        '3.0.0',
+        true
+    );
+
+    // Enqueue our analytics script
+    wp_enqueue_script(
+        'nuwarez-analytics',
+        get_template_directory_uri() . '/js/analytics/analytics.js',
+        array('web-vitals'),
+        '1.0.0',
+        true
+    );
+
+    // Pass nonce to JavaScript
+    wp_localize_script(
+        'nuwarez-analytics',
+        'analyticsNonce',
+        wp_create_nonce('nuwarez_analytics_nonce')
+    );
+}
+add_action('wp_enqueue_scripts', 'nuwarez_enqueue_analytics');
+
+/**
+ * Handle analytics data logging
+ */
+function nuwarez_log_analytics() {
+    check_ajax_referer('nuwarez_analytics_nonce', 'nonce');
+
+    $type = sanitize_text_field($_POST['type']);
+    $data = json_decode(stripslashes($_POST['data']), true);
+    
+    if (!$data) {
+        wp_send_json_error('Invalid data format');
+        return;
+    }
+
+    // Sanitize the data recursively
+    function sanitize_analytics_data($data) {
+        if (is_array($data)) {
+            return array_map('sanitize_analytics_data', $data);
+        }
+        return is_string($data) ? sanitize_text_field($data) : $data;
+    }
+    
+    $sanitized_data = sanitize_analytics_data($data);
+    
+    // Add timestamp and request metadata
+    $log_entry = array(
+        'type' => $type,
+        'data' => $sanitized_data,
+        'timestamp' => current_time('mysql'),
+        'ip' => sanitize_text_field($_SERVER['REMOTE_ADDR']),
+        'user_agent' => sanitize_text_field($_SERVER['HTTP_USER_AGENT'])
+    );
+    
+    // Log to database or file
+    $log_file = WP_CONTENT_DIR . '/analytics/analytics-' . date('Y-m-d') . '.log';
+    
+    // Ensure directory exists
+    wp_mkdir_p(dirname($log_file));
+    
+    // Append to log file
+    file_put_contents(
+        $log_file,
+        json_encode($log_entry) . "\n",
+        FILE_APPEND | LOCK_EX
+    );
+    
+    wp_send_json_success();
+}
+add_action('wp_ajax_log_analytics', 'nuwarez_log_analytics');
+add_action('wp_ajax_nopriv_log_analytics', 'nuwarez_log_analytics');
+
+/**
+ * Add meta description
+ */
+function nuwarez_meta_description() {
+    if (is_front_page()) {
+        echo '<meta name="description" content="Discover sustainable tech solutions and mindful entrepreneurship resources at NuWarez. Get practical insights for smart living and purposeful innovation.">';
+    }
+}
+add_action('wp_head', 'nuwarez_meta_description', 1);
+
+/**
+ * Add Schema.org markup
+ */
+function nuwarez_schema_markup() {
+    if (!is_front_page()) return;
+
+    $schema_org = array(
+        array(
+            "@context" => "https://schema.org",
+            "@type" => "Organization",
+            "name" => get_bloginfo('name'),
+            "description" => "Discover sustainable tech solutions and mindful entrepreneurship resources at NuWarez. Get practical insights for smart living and purposeful innovation.",
+            "url" => home_url(),
+            "sameAs" => array(
+                "https://twitter.com/nuwarez",
+                "https://linkedin.com/company/nuwarez"
+            )
+        ),
+        array(
+            "@context" => "https://schema.org",
+            "@type" => "WebSite",
+            "name" => get_bloginfo('name'),
+            "url" => home_url(),
+            "potentialAction" => array(
+                "@type" => "SearchAction",
+                "target" => home_url('/?s={search_term_string}'),
+                "query-input" => "required name=search_term_string"
+            )
+        )
+    );
+
+    if (have_posts()) {
+        $post = get_post();
+        $schema_org[] = array(
+            "@context" => "https://schema.org",
+            "@type" => "NewsArticle",
+            "headline" => "Smart Living. Sustainable Future.",
+            "description" => "Discover sustainable tech solutions and mindful entrepreneurship resources at NuWarez. Get practical insights for smart living and purposeful innovation.",
+            "image" => get_theme_file_uri('images/hero-image.jpg'),
+            "author" => array(
+                "@type" => "Organization",
+                "name" => get_bloginfo('name')
+            ),
+            "publisher" => array(
+                "@type" => "Organization",
+                "name" => get_bloginfo('name'),
+                "logo" => array(
+                    "@type" => "ImageObject",
+                    "url" => get_theme_file_uri('images/logo.png')
+                )
+            ),
+            "datePublished" => get_the_date('c'),
+            "dateModified" => get_the_modified_date('c')
+        );
+    }
+
+    foreach ($schema_org as $schema) {
+        echo '<script type="application/ld+json">' . wp_json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) . '</script>' . "\n";
+    }
+}
+add_action('wp_footer', 'nuwarez_schema_markup');
+
+/**
  * NuWarez Theme Functions
  */
 
@@ -15,6 +169,7 @@ function nuwarez_scripts() {
     
     // Enqueue scripts
     wp_enqueue_script('nuwarez-script', get_template_directory_uri() . '/js/script.js', array('jquery'), '1.0.0', true);
+    wp_enqueue_script('nuwarez-email-cta', get_template_directory_uri() . '/components/email-cta/email-cta.js', array('jquery', 'nuwarez-script'), '1.0.0', true);
     
     // Localize script for AJAX
     wp_localize_script('nuwarez-script', 'nuwarez_ajax', array(
