@@ -1,23 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Add animation classes to hero elements
-    const heroContent = document.querySelector('.hero__content');
+    // Add revealed class to hero elements
+    const heroContent = document.querySelector('.hero-content');
     if (heroContent) {
-        // Add fade-in animation to hero content
-        heroContent.classList.add('fade-in');
-        
-        // Add slide-in animation to hero elements
-        const elements = {
-            brand: heroContent.querySelector('.hero-brand'),
-            heading: heroContent.querySelector('h1'),
-            paragraph: heroContent.querySelector('p'),
-            form: heroContent.querySelector('.hero__cta-form')
-        };
-        
-        Object.entries(elements).forEach(([_, element], index) => {
-            if (element) {
-                if (index > 0) element.style.animationDelay = `${index * 0.2}s`;
-                element.classList.add('slide-in-left');
-            }
+        // Add revealed class to all direct children of hero-content
+        const elements = heroContent.children;
+        Array.from(elements).forEach(element => {
+            element.classList.add('revealed');
         });
     }
 
@@ -68,26 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 submitButton.disabled = false;
                 submitButton.textContent = originalButtonText;
             }
-        });
-    }
-
-    // Add hover animation to hero animation image
-    const heroAnimation = document.querySelector('.hero__animation-img');
-    if (heroAnimation) {
-        heroAnimation.addEventListener('mousemove', (e) => {
-            const { left, top, width, height } = heroAnimation.getBoundingClientRect();
-            const x = (e.clientX - left) / width - 0.5;
-            const y = (e.clientY - top) / height - 0.5;
-            
-            heroAnimation.style.transform = `
-                scale(1.02)
-                rotateY(${x * 10}deg)
-                rotateX(${-y * 10}deg)
-            `;
-        });
-
-        heroAnimation.addEventListener('mouseleave', () => {
-            heroAnimation.style.transform = 'scale(1) rotateY(0) rotateX(0)';
         });
     }
 });

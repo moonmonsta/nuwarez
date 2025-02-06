@@ -1,127 +1,99 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const nav = document.querySelector('nav');
+    const hero = document.querySelector('.hero');
+    const themeToggle = document.querySelector('.theme-toggle');
+    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    let lastScrollY = window.scrollY;
+    let isHovering = false;
+
+    // Handle scroll behavior
+    const handleScroll = () => {
+        const heroBottom = hero?.getBoundingClientRect().bottom + window.scrollY;
+        const currentScrollY = window.scrollY;
+        
+        if (currentScrollY > heroBottom) {
+            // Past hero section
+            if (currentScrollY > lastScrollY && !isHovering) {
+                nav.classList.add('hidden');
+                nav.classList.remove('scroll-up');
+            } else {
+                nav.classList.remove('hidden');
+                nav.classList.add('scroll-up');
+            }
+        } else {
+            // Within hero section
+            nav.classList.remove('hidden', 'scroll-up', 'hover-visible');
+        }
+        
+        lastScrollY = currentScrollY;
+    };
+
+    // Handle hover behavior
+    nav.addEventListener('mouseenter', () => {
+        isHovering = true;
+        if (window.scrollY > (hero?.getBoundingClientRect().bottom + window.scrollY)) {
+            nav.classList.add('hover-visible');
+            nav.classList.remove('hidden');
+        }
+    });
+
+    nav.addEventListener('mouseleave', () => {
+        isHovering = false;
+        if (window.scrollY > (hero?.getBoundingClientRect().bottom + window.scrollY)) {
+            nav.classList.remove('hover-visible');
+            if (window.scrollY > lastScrollY) {
+                nav.classList.add('hidden');
+            }
+        }
+    });
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    // Get saved theme from localStorage or use system preference
+    const getSavedTheme = () => {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            return savedTheme;
+        }
+        return prefersDarkScheme.matches ? 'dark' : 'light';
+    };
+
+    // Apply theme to document
+    const applyTheme = (theme) => {
+        document.body.dataset.theme = theme;
+        localStorage.setItem('theme', theme);
+    };
+
+    // Initialize theme
+    applyTheme(getSavedTheme());
+
+    // Toggle theme
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = document.body.dataset.theme;
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        applyTheme(newTheme);
+
+        // Animate the toggle
+        themeToggle.style.transform = 'rotate(180deg)';
+        setTimeout(() => {
+            themeToggle.style.transform = 'rotate(0)';
+        }, 300);
+    });
+
+    // Handle system theme changes
+    prefersDarkScheme.addEventListener('change', (e) => {
+        const savedTheme = localStorage.getItem('theme');
+        if (!savedTheme) {
+            applyTheme(e.matches ? 'dark' : 'light');
+        }
+    });
+
     // Mobile menu toggle
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const navContainer = document.querySelector('.nav-container');
-    
-    if (mobileMenuBtn && navContainer) {
-        mobileMenuBtn.addEventListener('click', () => {
-            navContainer.classList.toggle('active');
-            document.body.classList.toggle('nav-open');
-        });
 
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (navContainer.classList.contains('active') &&
-                !navContainer.contains(e.target) &&
-                !mobileMenuBtn.contains(e.target)) {
-                navContainer.classList.remove('active');
-                document.body.classList.remove('nav-open');
-            }
-        });
-    }
-
-    // Theme toggle
-    const themeToggle = document.querySelector('.theme-toggle');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
-    
-    function setTheme(isDark) {
-        document.documentElement.classList.toggle('light-mode', !isDark);
-        localStorage.setItem('theme', isDark ? 'dark' : 'light');
-    }
-
-    // Initialize theme
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-        setTheme(savedTheme === 'dark');
-    } else {
-        setTheme(prefersDark.matches);
-    }
-
-    if (themeToggle) {
-        themeToggle.addEventListener('click', () => {
-            setTheme(!document.documentElement.classList.contains('light-mode'));
-        });
-    }
-
-    // Search functionality
-    const searchBar = document.querySelector('.search-bar');
-    const searchResults = document.querySelector('.search-results');
-    let searchTimeout;
-
-    if (searchBar && searchResults) {
-        searchBar.addEventListener('input', (e) => {
-            clearTimeout(searchTimeout);
-            const query = e.target.value.trim();
-
-            if (query.length > 2) {
-                searchTimeout = setTimeout(() => {
-                    // TODO: Implement search functionality
-                    // For now, just show/hide the results container
-                    searchResults.style.display = 'block';
-                    searchResults.innerHTML = `<div class="search-message">Searching for "${query}"...</div>`;
-                }, 300);
-            } else {
-                searchResults.style.display = 'none';
-            }
-        });
-
-        // Close search results when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!searchBar.contains(e.target) && !searchResults.contains(e.target)) {
-                searchResults.style.display = 'none';
-            }
-        });
-
-        // Prevent clicks within search results from closing the container
-        searchResults.addEventListener('click', (e) => {
-            e.stopPropagation();
-        });
-    }
-
-    // Smooth scrolling for navigation links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', (e) => {
-            e.preventDefault();
-            const target = document.querySelector(anchor.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-                
-                // Close mobile menu if open
-                if (navContainer) {
-                    navContainer.classList.remove('active');
-                    document.body.classList.remove('nav-open');
-                }
-            }
-        });
+    mobileMenuBtn.addEventListener('click', () => {
+        navContainer.classList.toggle('active');
+        mobileMenuBtn.textContent = navContainer.classList.contains('active') ? '×' : '☰';
     });
-
-    // Set active nav item based on scroll position
-    const sections = document.querySelectorAll('section[id]');
-    let lastScrollY = window.scrollY;
-    
-    window.addEventListener('scroll', () => {
-        const scrollY = window.scrollY;
-        
-        // Show/hide navigation on scroll
-        if (Math.abs(scrollY - lastScrollY) > 50) {
-            document.querySelector('nav')?.classList.toggle('nav-hidden', scrollY > lastScrollY);
-            lastScrollY = scrollY;
-        }
-        
-        // Update active section
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop - 100;
-            const sectionHeight = section.offsetHeight;
-            const id = section.getAttribute('id');
-            
-            if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                document.querySelector(`.nav-links a[href="#${id}"]`)?.classList.add('active');
-            } else {
-                document.querySelector(`.nav-links a[href="#${id}"]`)?.classList.remove('active');
-            }
-        });
-    }, { passive: true });
 });

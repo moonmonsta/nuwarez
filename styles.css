@@ -11,22 +11,11 @@ Text Domain: nuwarez
 Tags: custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
 */
 
-/* Import core styles first */
+/* Import core styles */
 @import 'css/variables.css';
 @import 'css/base.css';
 
-/* Import layout styles */
-@import 'css/navigation.css';
-@import 'css/hero.css';
-@import 'css/featured.css';                                                                                                                                                                                                                                   
-@import 'css/niche-cards.css';
-@import 'css/banner-carousel.css';
-@import 'css/newsletter.css';
-@import 'css/about.css';
-@import 'css/articles.css';
-@import 'css/footer.css';
-
-/* Import component styles last to allow overrides */
+/* Import component styles */
 @import 'components/navigation/navigation.css';
 @import 'components/hero/hero.css';
 @import 'components/featured/featured.css';
@@ -231,6 +220,140 @@ Tags: custom-logo, custom-menu, featured-images, threaded-comments, translation-
   :root {
     --spacing-base: 2rem;
   }
+}
+
+/* Logo Styles */
+.logo {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  position: relative;
+  display: inline-block;
+  text-shadow: 0 0 10px var(--primary-transparent);
+  animation: logoGlow 3s ease-in-out infinite;
+}
+
+@keyframes logoGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 15px var(--primary-transparent))
+           drop-shadow(0 0 30px var(--secondary-transparent));
+  }
+  50% {
+    filter: drop-shadow(0 0 25px var(--primary-transparent))
+           drop-shadow(0 0 45px var(--secondary-transparent));
+  }
+}
+
+/* Article Link Niche Styles */
+.niche-tech {
+    transition: all var(--duration-fast) var(--ease-in-out-cubic);
+}
+.niche-tech:hover,
+.niche-tech:focus {
+    color: var(--amethyst) !important;
+    text-shadow: 0 0 10px var(--amethyst);
+}
+
+.niche-sustainability {
+    transition: all var(--duration-fast) var(--ease-in-out-cubic);
+}
+.niche-sustainability:hover,
+.niche-sustainability:focus {
+    color: var(--emerald) !important;
+    text-shadow: 0 0 10px var(--emerald);
+}
+
+.niche-wellness {
+    transition: all var(--duration-fast) var(--ease-in-out-cubic);
+}
+.niche-wellness:hover,
+.niche-wellness:focus {
+    color: var(--sapphire) !important;
+    text-shadow: 0 0 10px var(--sapphire);
+}
+
+.niche-entrepreneurship {
+    transition: all var(--duration-fast) var(--ease-in-out-cubic);
+}
+.niche-entrepreneurship:hover,
+.niche-entrepreneurship:focus {
+    color: var(--ruby) !important;
+    text-shadow: 0 0 10px var(--ruby);
+}
+
+.niche-nufinds {
+    transition: all var(--duration-fast) var(--ease-in-out-cubic);
+}
+.niche-nufinds:hover,
+.niche-nufinds:focus {
+    color: var(--topaz) !important;
+    text-shadow: 0 0 10px var(--topaz);
+}
+
+/* Active state for article links */
+.niche-tech.active {
+    color: var(--amethyst) !important;
+    text-shadow: 0 0 15px var(--amethyst);
+}
+
+.niche-sustainability.active {
+    color: var(--emerald) !important;
+    text-shadow: 0 0 15px var(--emerald);
+}
+
+.niche-wellness.active {
+    color: var(--sapphire) !important;
+    text-shadow: 0 0 15px var(--sapphire);
+}
+
+.niche-entrepreneurship.active {
+    color: var(--ruby) !important;
+    text-shadow: 0 0 15px var(--ruby);
+}
+
+.niche-nufinds.active {
+    color: var(--topaz) !important;
+    text-shadow: 0 0 15px var(--topaz);
+}
+
+/* Global Block Styles */
+.content-block {
+  position: relative;
+  max-width: 95%;
+  margin: 60px auto;
+  padding: var(--spacing-2xl) var(--spacing-lg);
+  border-radius: 20px;
+  overflow: hidden;
+  background: 
+    linear-gradient(135deg, rgba(0, 20, 15, 0.35) 0%, rgba(0, 20, 15, 0.25) 100%),
+    repeating-linear-gradient(45deg, rgba(0, 255, 157, 0.05) 0px, rgba(0, 255, 157, 0.05) 1px, transparent 1px, transparent 15px),
+    repeating-linear-gradient(-45deg, rgba(0, 212, 255, 0.05) 0px, rgba(0, 212, 255, 0.05) 1px, transparent 1px, transparent 15px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.content-block::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    linear-gradient(135deg, rgba(0, 255, 157, 0.1) 0%, transparent 100%),
+    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2300ff9d' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.15;
+  z-index: -1;
+}
+
+.content-block-alt {
+  background: 
+    linear-gradient(135deg, rgba(0, 20, 15, 0.45) 0%, rgba(0, 20, 15, 0.35) 100%),
+    radial-gradient(circle at 50% 50%, rgba(0, 255, 157, 0.1) 0%, transparent 70%),
+    url("data:image/svg+xml,%3Csvg width='150' height='150' viewBox='0 0 150 150' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Ccircle cx='25' cy='25' r='12' fill='%230066ff' fill-opacity='0.08'/%3E%3Ccircle cx='75' cy='75' r='12' fill='%2300ff9d' fill-opacity='0.08'/%3E%3Ccircle cx='125' cy='125' r='12' fill='%23ff00ff' fill-opacity='0.08'/%3E%3Ccircle cx='125' cy='25' r='12' fill='%23ffff00' fill-opacity='0.08'/%3E%3Ccircle cx='25' cy='125' r='12' fill='%2300ffff' fill-opacity='0.08'/%3E%3C/g%3E%3C/svg%3E");
 }
 
 /* High Contrast Overrides */

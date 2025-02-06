@@ -26,12 +26,12 @@
             }, false);
 
             this.particles = [];
-            this.numParticles = 50;
+            this.numParticles = 50; // Increased number of particles
             this.running = false;
             
             this.initWebGL();
+            this.resize(); // Call resize first to set proper dimensions
             this.createParticles();
-            this.resize();
             this.addEventListeners();
             this.start();
         }
@@ -119,23 +119,27 @@
 
         getRandomGemColor() {
             const colors = [
-                [1.0, 0.2, 0.2],  // Ruby red
-                [0.2, 0.4, 1.0],  // Sapphire blue
-                [0.2, 0.8, 0.4],  // Emerald green
-                [0.8, 0.2, 0.8],  // Amethyst purple
-                [0.0, 0.8, 0.8]   // Turquoise
+                [0.6, 0.3, 0.4],  // Muted ruby
+                [0.3, 0.4, 0.6],  // Muted sapphire
+                [0.4, 0.6, 0.5],  // Muted emerald
+                [0.5, 0.4, 0.6],  // Muted amethyst
+                [0.4, 0.5, 0.6]   // Muted aquamarine
             ];
             return colors[Math.floor(Math.random() * colors.length)];
         }
 
         createParticles() {
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+            
             for (let i = 0; i < this.numParticles; i++) {
+                // Distribute particles across the entire viewport
                 this.particles.push({
-                    x: Math.random() * this.canvas.width,
-                    y: Math.random() * this.canvas.height,
-                    size: Math.random() * 3 + 2,
-                    speedX: (Math.random() - 0.5) * 0.5, // Reduced speed
-                    speedY: (Math.random() - 0.5) * 0.5, // Reduced speed
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    size: Math.random() * 5 + 4, // 4-9 pixels
+                    speedX: (Math.random() - 0.5) * 0.2,
+                    speedY: (Math.random() - 0.5) * 0.2,
                     life: Math.random() * 0.5 + 0.5,
                     color: this.getRandomGemColor(),
                     targetColor: this.getRandomGemColor(),
@@ -145,12 +149,14 @@
         }
 
         updateParticles() {
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+            
             this.particles.forEach(particle => {
                 particle.x += particle.speedX;
                 particle.y += particle.speedY;
-                particle.life -= 0.0005; // Slower life decrease
+                particle.life -= 0.0003;
 
-                // Update color transition
                 particle.colorTransition += 0.005;
                 if (particle.colorTransition >= 1) {
                     particle.color = particle.targetColor;
@@ -158,16 +164,16 @@
                     particle.colorTransition = 0;
                 }
 
-                // Interpolate between colors
                 particle.currentColor = particle.color.map((start, i) => 
                     start + (particle.targetColor[i] - start) * particle.colorTransition
                 );
 
                 if (particle.life <= 0 ||
-                    particle.x < 0 || particle.x > this.canvas.width ||
-                    particle.y < 0 || particle.y > this.canvas.height) {
-                    particle.x = Math.random() * this.canvas.width;
-                    particle.y = Math.random() * this.canvas.height;
+                    particle.x < 0 || particle.x > width ||
+                    particle.y < 0 || particle.y > height) {
+                    // Respawn at random position across viewport
+                    particle.x = Math.random() * width;
+                    particle.y = Math.random() * height;
                     particle.life = Math.random() * 0.5 + 0.5;
                     particle.color = this.getRandomGemColor();
                     particle.targetColor = this.getRandomGemColor();
@@ -236,14 +242,21 @@
 
         resize() {
             const dpr = window.devicePixelRatio || 1;
-            const displayWidth = Math.floor(this.canvas.clientWidth * dpr);
-            const displayHeight = Math.floor(this.canvas.clientHeight * dpr);
+            const displayWidth = Math.floor(window.innerWidth * dpr);
+            const displayHeight = Math.floor(window.innerHeight * dpr);
 
             if (this.canvas.width !== displayWidth || this.canvas.height !== displayHeight) {
                 this.canvas.width = displayWidth;
                 this.canvas.height = displayHeight;
                 if (this.gl) {
                     this.gl.viewport(0, 0, this.canvas.width, this.canvas.height);
+                }
+                // Redistribute particles when canvas is resized
+                if (this.particles.length > 0) {
+                    this.particles.forEach(particle => {
+                        particle.x = Math.random() * displayWidth;
+                        particle.y = Math.random() * displayHeight;
+                    });
                 }
             }
         }
@@ -260,7 +273,7 @@
                 this.particles.forEach(particle => {
                     ctx.beginPath();
                     ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-                    const color = particle.currentColor || [0.2, 0.4, 1.0]; // Default to sapphire if no color
+                    const color = particle.currentColor || [0.2, 0.4, 1.0];
                     ctx.fillStyle = `rgba(${color[0] * 255}, ${color[1] * 255}, ${color[2] * 255}, ${particle.life})`;
                     ctx.fill();
                     
@@ -269,8 +282,8 @@
                     particle.life -= 0.0005;
                     
                     if (particle.life <= 0) {
-                        particle.x = Math.random() * this.canvas.width;
-                        particle.y = Math.random() * this.canvas.height;
+                        particle.x = Math.random() * window.innerWidth;
+                        particle.y = Math.random() * window.innerHeight;
                         particle.life = Math.random() * 0.5 + 0.5;
                     }
                 });

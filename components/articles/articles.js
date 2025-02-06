@@ -1,12 +1,14 @@
 class Articles {
     constructor() {
-        this.grid = document.querySelector('.articles__grid');
-        this.filters = document.querySelectorAll('.articles__filter');
-        this.loadMoreBtn = document.querySelector('.articles__load-more');
+        this.carousel = document.querySelector('.articles-carousel');
         this.articles = document.querySelectorAll('.article-card');
-        this.currentPage = 1;
-        this.articlesPerPage = 4;
-        this.currentCategory = 'all';
+        this.prevBtn = document.querySelector('.carousel-btn.prev');
+        this.nextBtn = document.querySelector('.carousel-btn.next');
+        this.filters = document.querySelectorAll('.filter-btn');
+        
+        this.currentIndex = 0;
+        this.cardsPerView = this.calculateCardsPerView();
+        this.totalCards = this.articles.length;
         
         this.init();
     }
@@ -18,11 +20,21 @@ class Articles {
         // Add filter functionality
         this.setupFilters();
         
-        // Add load more functionality
-        this.setupLoadMore();
+        // Initialize carousel
+        this.setupCarousel();
         
-        // Initialize masonry layout
-        this.setupMasonryLayout();
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            this.cardsPerView = this.calculateCardsPerView();
+            this.updateCarouselPosition();
+            this.updateButtons();
+        });
+    }
+
+    calculateCardsPerView() {
+        const containerWidth = this.carousel.parentElement.offsetWidth - 80; // Subtract padding
+        const cardWidth = 300 + 32; // card width + gap
+        return Math.floor(containerWidth / cardWidth);
     }
 
     setupScrollAnimations() {
@@ -54,8 +66,7 @@ class Articles {
                 filter.classList.add('active');
 
                 // Get selected category
-                const category = filter.dataset.category;
-                this.currentCategory = category;
+                const category = filter.dataset.filter;
 
                 // Filter articles
                 this.filterArticles(category);
@@ -65,79 +76,50 @@ class Articles {
 
     filterArticles(category) {
         this.articles.forEach(article => {
-            if (category === 'all' || article.dataset.category === category) {
+            if (category === 'all' || article.dataset.topic === category) {
                 article.style.display = 'block';
-                // Reset animation
-                article.classList.remove('animate-in');
-                void article.offsetWidth; // Trigger reflow
-                article.classList.add('animate-in');
             } else {
                 article.style.display = 'none';
             }
         });
 
-        // Reset masonry layout
-        this.setupMasonryLayout();
-        
-        // Reset pagination
-        this.currentPage = 1;
-        this.updateLoadMoreButton();
+        // Reset carousel position
+        this.currentIndex = 0;
+        this.updateCarouselPosition();
+        this.updateButtons();
     }
 
-    setupLoadMore() {
-        if (this.loadMoreBtn) {
-            this.loadMoreBtn.addEventListener('click', () => this.loadMoreArticles());
-            this.updateLoadMoreButton();
+    setupCarousel() {
+        if (this.prevBtn && this.nextBtn) {
+            this.prevBtn.addEventListener('click', () => this.slide('prev'));
+            this.nextBtn.addEventListener('click', () => this.slide('next'));
+            this.updateButtons();
         }
     }
 
-    loadMoreArticles() {
-        // Simulate loading more articles
-        const startIndex = this.currentPage * this.articlesPerPage;
-        const endIndex = startIndex + this.articlesPerPage;
-        const visibleArticles = Array.from(this.articles).filter(article => 
-            this.currentCategory === 'all' || article.dataset.category === this.currentCategory
-        );
-
-        visibleArticles.slice(startIndex, endIndex).forEach(article => {
-            article.style.display = 'block';
-            // Animate new articles
-            article.classList.remove('animate-in');
-            void article.offsetWidth; // Trigger reflow
-            article.classList.add('animate-in');
-        });
-
-        this.currentPage++;
-        this.updateLoadMoreButton();
-        this.setupMasonryLayout();
-    }
-
-    updateLoadMoreButton() {
-        const visibleArticles = Array.from(this.articles).filter(article => 
-            this.currentCategory === 'all' || article.dataset.category === this.currentCategory
-        );
-        
-        const hasMoreArticles = this.currentPage * this.articlesPerPage < visibleArticles.length;
-        
-        if (this.loadMoreBtn) {
-            this.loadMoreBtn.style.display = hasMoreArticles ? 'inline-block' : 'none';
+    slide(direction) {
+        if (direction === 'next' && this.currentIndex < this.totalCards - this.cardsPerView) {
+            this.currentIndex++;
+        } else if (direction === 'prev' && this.currentIndex > 0) {
+            this.currentIndex--;
         }
+
+        this.updateCarouselPosition();
+        this.updateButtons();
     }
 
-    setupMasonryLayout() {
-        // Simple masonry-like layout using CSS Grid
-        if (window.innerWidth > 768) {
-            const gridItems = this.grid.children;
-            let maxHeight = 0;
-            
-            Array.from(gridItems).forEach(item => {
-                const height = item.getBoundingClientRect().height;
-                maxHeight = Math.max(maxHeight, height);
-            });
-            
-            this.grid.style.gridAutoRows = maxHeight + 'px';
-        } else {
-            this.grid.style.gridAutoRows = 'auto';
+    updateCarouselPosition() {
+        const cardWidth = 300 + 32; // card width + gap
+        const offset = -this.currentIndex * cardWidth;
+        this.carousel.style.transform = `translateX(${offset}px)`;
+    }
+
+    updateButtons() {
+        if (this.prevBtn) {
+            this.prevBtn.disabled = this.currentIndex <= 0;
+        }
+        if (this.nextBtn) {
+            this.nextBtn.disabled = this.currentIndex >= this.totalCards - this.cardsPerView;
         }
     }
 }

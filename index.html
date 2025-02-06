@@ -20,14 +20,17 @@
     
     <!-- Styles -->
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="components/email-cta/email-cta.css">
     
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="js/script.js" defer></script>
+    <script src="components/hero/hero.js" defer></script>
+    <script src="js/pattern-animations.js" defer></script>
 </head>
 <body>
     <canvas id="particleCanvas"></canvas>
-    <header class="hero" role="banner">
+    <header role="banner">
         <nav>
             <div class="logo">NuWareZ</div>
             <button class="mobile-menu-btn">☰</button>
@@ -36,9 +39,9 @@
                     <li><a href="#tech">Tech</a></li>
                     <li><a href="#sustainability">Sustainability</a></li>
                     <li><a href="#entrepreneurship">Entrepreneurship</a></li>
+                    <li><a href="#productivity">Productivity</a></li>
                     <li><a href="#wellness">Wellness</a></li>
                     <li><a href="#nufinds">NuFinds</a></li>
-                    <li><a href="#articles">Articles</a></li>
                 </ul>
                 <div class="search-container">
                     <span class="search-icon">🔍</span>
@@ -51,16 +54,26 @@
                 </button>
             </div>
         </nav>
+    </header>
+
+    <section class="hero">
         <div class="hero-content">
             <div class="hero-brand">NuWareZ</div>
             <h1 data-text="Innovation Meets Purpose">Innovation Meets Purpose</h1>
             <p>Empowering innovators to thrive mindfully and live sustainably.</p>
             <form id="hero-email-form" class="hero-email-form">
-                <input type="email" placeholder="Enter your email for tech insights" required>
-                <button type="submit" class="cta">Get Started</button>
+                <input 
+                    type="email" 
+                    placeholder="Enter your email for tech insights" 
+                    required
+                    aria-label="Email subscription"
+                >
+                <button type="submit" class="cta">
+                    Get Started
+                </button>
             </form>
         </div>
-    </header>
+    </section>
 
     <main id="main-content" role="main">
         <section id="featured" class="featured-section fade-in" aria-labelledby="featured-title">
@@ -149,6 +162,24 @@
             </div>
         </section>
 
+        <section class="email-cta">
+            <div class="email-cta__container">
+                <h2 class="email-cta__title">Stay Ahead of Innovation</h2>
+                <p class="email-cta__description">Get weekly insights on technology, sustainability, and mindful living.</p>
+                <form class="email-cta__form">
+                    <div class="email-cta__input-group">
+                        <input type="email" class="email-cta__input" placeholder="Enter your email" required>
+                        <button type="submit" class="email-cta__button">
+                            Subscribe
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                                <path d="M1 8h14M8 1l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
         <section id="latest-articles" class="articles-section fade-in" aria-labelledby="articles-title">
             <div class="block-background">
                 <div class="articles-header">
@@ -158,6 +189,7 @@
                     <button class="filter-btn" data-filter="tech">Tech</button>
                     <button class="filter-btn" data-filter="sustainability">Sustainability</button>
                     <button class="filter-btn" data-filter="entrepreneurship">Business</button>
+                    <button class="filter-btn" data-filter="productivity">Productivity</button>
                     <button class="filter-btn" data-filter="wellness">Wellness</button>
                 </div>
             </div>
@@ -357,35 +389,6 @@
                     </div>
                 </div>
 
-                <div class="testimonials">
-                    <h3>What Our Readers Say</h3>
-                    <div class="testimonial-grid">
-                        <div class="testimonial-card">
-                            <div class="testimonial-content">
-                                <p>"The weekly tech insights have been invaluable for keeping up with AI trends. Absolutely worth every minute reading!"</p>
-                            </div>
-                            <div class="testimonial-author">
-                                <img src="placeholder.svg" alt="Sarah Chen" class="author-image">
-                                <div class="author-info">
-                                    <strong>Sarah Chen</strong>
-                                    <span>Tech Lead at Future Labs</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="testimonial-card">
-                            <div class="testimonial-content">
-                                <p>"Their sustainability tips helped me transform my startup into a fully eco-conscious business. Game-changing newsletter!"</p>
-                            </div>
-                            <div class="testimonial-author">
-                                <img src="placeholder.svg" alt="Marcus Rodriguez" class="author-image">
-                                <div class="author-info">
-                                    <strong>Marcus Rodriguez</strong>
-                                    <span>Founder, GreenTech Solutions</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </section>
     </main>
@@ -403,6 +406,7 @@
                         <li><a href="#tech">Tech & AI</a></li>
                         <li><a href="#sustainability">Sustainability</a></li>
                         <li><a href="#entrepreneurship">Entrepreneurship</a></li>
+                        <li><a href="#productivity">Productivity</a></li>
                         <li><a href="#wellness">Wellness</a></li>
                         <li><a href="#nufinds">NuFinds</a></li>
                     </ul>
@@ -426,6 +430,7 @@
             <path d="M18 15l-6-6-6 6"/>
         </svg>
     </button>
+    <script src="components/articles/articles.js"></script>
     <script src="js/scroll-animations.js"></script>
 </body>
 </html>

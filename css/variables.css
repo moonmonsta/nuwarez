@@ -1,5 +1,6 @@
 /* Design System */
-:root {
+:root,
+[data-theme="dark"] {
   /* Colors - Base */
   --primary-hue: 157;
   --primary-sat: 100%;
@@ -112,12 +113,13 @@
   --spacing-3xl: clamp(4rem, 3.2rem + 4vw, 6rem);
 
   /* Layout */
+  --container-padding: clamp(1rem, 3vw, 3rem);
   --content-width-xs: 20rem;
   --content-width-sm: 30rem;
   --content-width-md: 45rem;
-  --content-width-lg: 65rem;
-  --content-width-xl: 80rem;
-  --content-width-max: 95rem;
+  --content-width-lg: 55rem;
+  --content-width-xl: 65rem;
+  --content-width-max: 75rem;
   --content-width-text: 70ch;
 
   /* Border Radius */
@@ -193,6 +195,50 @@
   :root {
     --spacing-base: 2rem;
   }
+}
+
+/* Light Theme */
+[data-theme="light"] {
+  /* Colors - Surface */
+  --surface-0: hsl(0 0% 100%);
+  --surface-1: hsl(220 20% 98%);
+  --surface-2: hsl(220 20% 96%);
+  --surface-3: hsl(220 20% 93%);
+  --surface-4: hsl(220 20% 90%);
+  
+  /* Colors - Text */
+  --text-primary: hsl(220 20% 10%);
+  --text-secondary: hsl(220 20% 30%);
+  --text-tertiary: hsl(220 20% 40%);
+  --text-disabled: hsl(220 20% 60%);
+
+  /* Theme-specific Aliases */
+  --darker-bg: var(--surface-0);
+  --dark-bg: var(--surface-1);
+  --card-bg: var(--surface-2);
+  --text: var(--text-primary);
+  --text-muted: var(--text-secondary);
+  --text-heading: var(--text-primary);
+  --text-accent: var(--primary-dark);
+  --text-inverse: var(--surface-0);
+  --border: hsl(220 20% 0% / 0.15);
+  --input-bg: var(--surface-1);
+
+  /* Shadows - Light Theme */
+  --shadow-sm: 0 2px 4px hsl(220 20% 0% / 0.08);
+  --shadow-md: 0 4px 8px -1px hsl(220 20% 0% / 0.1);
+  --shadow-lg: 0 12px 20px -3px hsl(220 20% 0% / 0.12);
+  --shadow-xl: 0 24px 30px -5px hsl(220 20% 0% / 0.12);
+  --shadow-2xl: 0 32px 60px -12px hsl(220 20% 0% / 0.25);
+  --shadow-inner: inset 0 2px 4px 0 hsl(220 20% 0% / 0.08);
+}
+
+/* Theme Transition */
+*, *::before, *::after {
+  transition: background-color var(--duration-normal) var(--ease-in-out-cubic),
+              border-color var(--duration-normal) var(--ease-in-out-cubic),
+              color var(--duration-normal) var(--ease-in-out-cubic),
+              box-shadow var(--duration-normal) var(--ease-in-out-cubic);
 }
 
 /* High Contrast Overrides */
