@@ -19,16 +19,18 @@
   --info: hsl(201 94% 42%);
 
   /* Colors - Gemstone */
-  --ruby: hsl(340 92% 52%);
-  --sapphire: hsl(217 84% 44%);
-  --sapphire-rgb: 31, 97, 217;  /* RGB values for sapphire */
+  --amethyst: hsl(270 40% 65%);
+  --amethyst-rgb: 166, 140, 191;  /* RGB values for amethyst */
   --emerald: hsl(140 45% 60%);
   --emerald-rgb: 102, 191, 134;  /* RGB values for emerald */
-  --diamond: hsl(195 100% 90%);
-  --amethyst: hsl(270 40% 65%);
-  --topaz: hsl(35 100% 78%);
-  --opal: hsl(165 12% 76%);
-  --peridot: hsl(93 30% 68%);
+  --sapphire: hsl(217 84% 44%);
+  --sapphire-rgb: 31, 97, 217;  /* RGB values for sapphire */
+  --citrine: hsl(45 100% 50%);
+  --citrine-rgb: 255, 215, 0;  /* RGB values for citrine */
+  --ruby: hsl(340 92% 52%);
+  --ruby-rgb: 217, 31, 77;  /* RGB values for ruby */
+  --magenta: hsl(300 100% 60%);
+  --magenta-rgb: 255, 0, 255;  /* RGB values for magenta */
 
   /* Colors - Surface */
   --surface-0: hsl(220 20% 7%);

@@ -170,6 +170,7 @@ function nuwarez_scripts() {
     // Enqueue scripts
     wp_enqueue_script('nuwarez-script', get_template_directory_uri() . '/js/script.js', array('jquery'), '1.0.0', true);
     wp_enqueue_script('nuwarez-email-cta', get_template_directory_uri() . '/components/email-cta/email-cta.js', array('jquery', 'nuwarez-script'), '1.0.0', true);
+    wp_enqueue_script('nuwarez-featured', get_template_directory_uri() . '/components/featured/featured.js', array('jquery', 'nuwarez-script'), '1.0.0', true);
     
     // Localize script for AJAX
     wp_localize_script('nuwarez-script', 'nuwarez_ajax', array(

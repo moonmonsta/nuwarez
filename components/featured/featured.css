@@ -7,12 +7,12 @@
   overflow: hidden;
   border-radius: var(--border-radius-2xl);
   z-index: 1;
-  background: rgba(var(--sapphire-rgb), 0.05);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(var(--sapphire-rgb), 0.1);
-  box-shadow: 
-    0 0 40px rgba(var(--sapphire-rgb), 0.1),
-    inset 0 0 20px rgba(var(--sapphire-rgb), 0.05);
+  background: rgba(var(--emerald-rgb), 0.05);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(var(--emerald-rgb), 0.1);
+  box-shadow: 0 0 30px rgba(var(--emerald-rgb), 0.15),
+              inset 0 0 20px rgba(var(--emerald-rgb), 0.05);
 }
 
 .block-background::before {
@@ -20,13 +20,13 @@
   position: absolute;
   inset: 0;
   background: 
-    linear-gradient(135deg, rgba(var(--sapphire-rgb), 0.1) 0%, transparent 100%),
+    linear-gradient(135deg, rgba(var(--emerald-rgb), 0.1) 0%, transparent 100%),
     repeating-linear-gradient(
       45deg,
       transparent,
       transparent 10px,
-      rgba(var(--sapphire-rgb), 0.05) 10px,
-      rgba(var(--sapphire-rgb), 0.05) 20px
+      rgba(var(--emerald-rgb), 0.05) 10px,
+      rgba(var(--emerald-rgb), 0.05) 20px
     );
   z-index: -1;
   opacity: 0.8;
@@ -36,6 +36,9 @@
 .featured-container {
   position: relative;
   z-index: 2;
+  overflow: hidden;
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius-xl);
 }
 
 .featured-row {
@@ -63,55 +66,78 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
+/* Featured Card Styles */
 .featured-card {
-  background: rgba(0, 20, 15, 0.4);
-  backdrop-filter: blur(10px);
+  --glow-opacity: 0;
+  position: relative;
+  display: block;
+  text-decoration: none;
+  background: rgba(0, 20, 15, 0.3);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border-radius: var(--border-radius-lg);
   padding: var(--spacing-lg);
-  transition: all 0.3s ease;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  position: relative;
+  overflow: visible;
+  transition: transform var(--duration-normal) var(--ease-out-cubic),
+              box-shadow var(--duration-normal) var(--ease-out-cubic);
+  box-shadow: var(--shadow-lg);
+  cursor: pointer;
+  isolation: isolate;
 }
 
-/* Yellow glow effect for productivity card */
-.featured-card[data-topic="productivity"] {
-  box-shadow: 0 8px 32px rgba(255, 255, 0, 0.1);
-}
-
-.featured-card[data-topic="productivity"]:hover {
-  box-shadow: 0 15px 40px rgba(255, 255, 0, 0.15);
-}
-
-.featured-card[data-topic="productivity"]::before {
+/* Gemstone Glow Layer */
+.featured-card::before {
   content: '';
   position: absolute;
-  inset: -2px;
-  background: linear-gradient(135deg, rgba(255, 255, 0, 0.1), transparent);
+  inset: -20px;
   border-radius: inherit;
+  background: radial-gradient(
+    circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(var(--gem-rgb), 0.6) 0%,
+    rgba(var(--gem-rgb), 0.3) 35%,
+    transparent 70%
+  );
+  opacity: var(--glow-opacity);
+  transition: opacity 0.4s var(--ease-out-sine);
   z-index: -1;
-  opacity: 0.5;
-  transition: opacity 0.3s ease;
+  mix-blend-mode: screen;
+  pointer-events: none;
 }
 
-.featured-card[data-topic="productivity"]:hover::before {
-  opacity: 0.7;
+/* Category-Specific Colors */
+[data-gem="technology"] {
+  --gem-rgb: var(--amethyst-rgb); /* Amethyst (purple tone) */
+}
+[data-gem="sustainability"] {
+  --gem-rgb: var(--emerald-rgb); /* Emerald (green tone) */
+}
+[data-gem="wellness"] {
+  --gem-rgb: var(--sapphire-rgb); /* Sapphire (blue tone) */
+}
+[data-gem="entrepreneurship"] {
+  --gem-rgb: var(--citrine-rgb); /* Citrine (golden-yellow tone) */
+}
+[data-gem="productivity"] {
+  --gem-rgb: var(--ruby-rgb); /* Ruby (red tone) */
+}
+[data-gem="nufinds"] {
+  --gem-rgb: var(--magenta-rgb); /* Magenta */
 }
 
+/* Hover Effects */
 .featured-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  --glow-opacity: 1;
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl),
+              0 0 40px rgba(var(--gem-rgb), 0.4),
+              0 0 80px rgba(var(--gem-rgb), 0.2);
 }
 
-.topic-tag {
-  display: inline-block;
-  padding: 0.25rem 0.75rem;
-  border-radius: var(--border-radius-full);
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-medium);
-  margin-bottom: var(--spacing-sm);
-  background: rgba(0, 255, 157, 0.1);
-  color: var(--primary);
-  border: 1px solid rgba(0, 255, 157, 0.2);
+/* Active State */
+.featured-card:active {
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: var(--shadow-lg),
+              0 0 20px rgba(var(--gem-rgb), 0.15);
 }
 
 .featured-card h3 {
@@ -126,21 +152,6 @@
   font-size: var(--font-size-sm);
   line-height: 1.6;
   margin-bottom: var(--spacing-md);
-}
-
-.read-more {
-  color: var(--primary);
-  text-decoration: none;
-  font-weight: var(--font-weight-medium);
-  font-size: var(--font-size-sm);
-  display: inline-flex;
-  align-items: center;
-  transition: all 0.3s ease;
-}
-
-.read-more:hover {
-  color: var(--secondary);
-  transform: translateX(5px);
 }
 
 #featured-title {
@@ -189,20 +200,52 @@
   .featured-card {
     padding: var(--spacing-md);
   }
+
+  .featured-card::before {
+    background: radial-gradient(
+      400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      rgba(var(--gem-rgb), 0.3) 0%,
+      transparent 90%
+    );
+  }
 }
 
 /* Accessibility */
 @media (prefers-reduced-motion: reduce) {
-  .featured-card,
-  .read-more {
-    transition: none;
+  .featured-card {
+    transition: none !important;
   }
 
   .featured-card:hover {
     transform: none;
+    box-shadow: var(--shadow-lg);
   }
 
-  .block-background::after {
+  .featured-card:active {
+    transform: none;
+  }
+
+  .featured-card::before {
+    display: none;
+  }
+
+  .block-background::before {
     animation: none;
+  }
+
+  /* Provide alternative hover indication */
+  .featured-card:hover h3 {
+    color: var(--primary);
+  }
+}
+
+/* High Contrast Mode Support */
+@media (forced-colors: active) {
+  .featured-card {
+    border: 2px solid CanvasText;
+  }
+  
+  .featured-card:hover {
+    border-color: Highlight;
   }
 }
