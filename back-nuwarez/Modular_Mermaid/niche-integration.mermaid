@@ -1,0 +1,63 @@
+flowchart TD
+    subgraph Core[Core Themes]
+        T[Tech & AI] --- S[Sustainability]
+        S --- E[Entrepreneurship]
+        
+        T1[AI Ethics]
+        T2[Tool Innovation]
+        T3[Digital Evolution]
+        
+        S1[Environmental Impact]
+        S2[Resource Optimization]
+        S3[Future Planning]
+        
+        E1[Business Development]
+        E2[Innovation Methods]
+        E3[Growth Strategies]
+        
+        T --> T1 & T2 & T3
+        S --> S1 & S2 & S3
+        E --> E1 & E2 & E3
+    end
+
+    subgraph Support[Support Pillars]
+        W[Wellness] --- RP[Remote Work & Productivity]
+        
+        W1[Mental Health]
+        W2[Work-Life Integration]
+        W3[Sustainable Practices]
+        
+        RP1[Digital Tools]
+        RP2[Workflow Systems]
+        RP3[Time Management]
+        
+        W --> W1 & W2 & W3
+        RP --> RP1 & RP2 & RP3
+    end
+
+    subgraph Creative[Random Niche]
+        R[Creative Expression]
+        
+        R1[Personal Insights]
+        R2[Experimental Content]
+        R3[Cross-Domain Ideas]
+        
+        R --> R1 & R2 & R3
+    end
+
+    subgraph Integration[Integration Points]
+        I1[Sustainable Tech]
+        I2[AI Productivity]
+        I3[Digital Wellness]
+        I4[Creative Innovation]
+    end
+
+    T & S --> I1
+    T & RP --> I2
+    W & RP --> I3
+    R & E --> I4
+
+    style Core fill:#bbf,stroke:#333,stroke-width:2px
+    style Support fill:#bfb,stroke:#333,stroke-width:2px
+    style Creative fill:#fbf,stroke:#333,stroke-width:2px
+    style Integration fill:#fbb,stroke:#333,stroke-width:2px

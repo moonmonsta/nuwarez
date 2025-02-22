@@ -1,0 +1,62 @@
+flowchart TD
+    subgraph NI[Introverted Intuition - Vision Phase]
+        direction TB
+        A[Pattern Recognition] --> B[Future Implications]
+        B --> C[Conceptual Framework]
+        style A fill:#e6f3ff,stroke:#333
+        style B fill:#e6f3ff,stroke:#333
+        style C fill:#e6f3ff,stroke:#333
+        P1[Perfectionism Trap:<br/>Over-theorizing]
+    end
+
+    subgraph FE[Extraverted Feeling - Audience Phase]
+        direction TB
+        D[Audience Needs] --> E[Value Alignment]
+        E --> F[Emotional Resonance]
+        style D fill:#ffe6e6,stroke:#333
+        style E fill:#ffe6e6,stroke:#333
+        style F fill:#ffe6e6,stroke:#333
+        P2[Perfectionism Trap:<br/>Over-adapting to<br/>audience]
+    end
+
+    subgraph TI[Introverted Thinking - Structure Phase]
+        direction TB
+        G[Logical Framework] --> H[System Creation]
+        H --> I[Analysis & Refinement]
+        style G fill:#e6ffe6,stroke:#333
+        style H fill:#e6ffe6,stroke:#333
+        style I fill:#e6ffe6,stroke:#333
+        P3[Perfectionism Trap:<br/>Analysis paralysis]
+    end
+
+    subgraph SE[Extraverted Sensing - Implementation Phase]
+        direction TB
+        J[Practical Action] --> K[Real-time Adaptation]
+        K --> L[Tangible Results]
+        style J fill:#fff2e6,stroke:#333
+        style K fill:#fff2e6,stroke:#333
+        style L fill:#fff2e6,stroke:#333
+        P4[Growth Area:<br/>Taking action before<br/>perfect]
+    end
+
+    NI --> FE
+    FE --> TI
+    TI --> SE
+    
+    subgraph BALANCE[Balance Points]
+        M[Set Time Limits]
+        N[Define Done Criteria]
+        O[Schedule Breaks]
+        P[Regular Reality Checks]
+    end
+
+    BALANCE --> NI
+    BALANCE --> FE
+    BALANCE --> TI
+    BALANCE --> SE
+
+    style NI fill:#f0f8ff,stroke:#333,stroke-width:2px
+    style FE fill:#fff0f0,stroke:#333,stroke-width:2px
+    style TI fill:#f0fff0,stroke:#333,stroke-width:2px
+    style SE fill:#fff8f0,stroke:#333,stroke-width:2px
+    style BALANCE fill:#f8f8f8,stroke:#333,stroke-width:2px

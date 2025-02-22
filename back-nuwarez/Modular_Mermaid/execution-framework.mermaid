@@ -1,0 +1,71 @@
+flowchart TD
+    subgraph Template[Template Construction]
+        A[Master Document Template] --> B[Section Templates]
+        B --> C[Connection Points]
+        C --> D[Voice Guidelines]
+        
+        A1[Document Structure]
+        A2[Style Guide]
+        B1[Section Types]
+        B2[Component Library]
+        
+        A --> A1 & A2
+        B --> B1 & B2
+    end
+
+    subgraph Blocks[Content Block Creation]
+        E[Introduction Block] --> F[Core Content Blocks]
+        F --> G[Transition Blocks]
+        G --> H[Conclusion Block]
+        
+        E1[Hook Components]
+        F1[Teaching Elements]
+        G1[Flow Maintainers]
+        H1[Action Drivers]
+        
+        E --> E1
+        F --> F1
+        G --> G1
+        H --> H1
+    end
+
+    subgraph Assembly[Content Assembly]
+        I[Block Sequencing] --> J[Connection Implementation]
+        J --> K[Flow Verification]
+        K --> L[Quality Check]
+        
+        I1[Order Logic]
+        J1[Bridge Elements]
+        K1[Progression Check]
+        L1[Value Validation]
+        
+        I --> I1
+        J --> J1
+        K --> K1
+        L --> L1
+    end
+
+    subgraph Elements[Reusable Elements]
+        M[Metaphor Library] --> N[Transition Library]
+        N --> O[Example Library]
+        O --> P[Call-to-Action Library]
+        
+        M1[Core Metaphors]
+        N1[Bridge Text]
+        O1[Case Studies]
+        P1[Action Prompts]
+        
+        M --> M1
+        N --> N1
+        O --> O1
+        P --> P1
+    end
+
+    Template --> Blocks
+    Blocks --> Assembly
+    Elements --> Blocks
+
+    style Template fill:#f9f,stroke:#333,stroke-width:2px
+    style Blocks fill:#bbf,stroke:#333,stroke-width:2px
+    style Assembly fill:#bfb,stroke:#333,stroke-width:2px
+    style Elements fill:#fbb,stroke:#333,stroke-width:2px

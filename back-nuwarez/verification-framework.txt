@@ -1,0 +1,128 @@
+# Integrity Verification Framework: Comprehensive Fact-Checking & Link Authority Protocol
+
+## Core Framework: Establishing Truth Through Multilayered Verification
+
+This framework transcends conventional fact-checking by implementing a systematic truth-verification methodology that balances analytical rigor with intuitive pattern recognition. By employing multiple verification lenses, you'll establish both factual accuracy and meaningful context—ensuring your content maintains impeccable integrity while delivering genuine insight.
+
+## Implementation Instructions
+
+Apply this prompt to AI tools like Claude, GPT, or Perplexity to verify content claims and identify high-quality external resources worth referencing.
+
+```
+I need to conduct a comprehensive truth verification and external resource assessment for my content on [SPECIFIC TOPIC/ARTICLE].
+
+Implement a multi-dimensional verification protocol that examines:
+
+1. FACTUAL CLAIM IDENTIFICATION: First, identify all verifiable claims in my content including:
+   - Statistical assertions and numerical data points
+   - Causal relationship claims
+   - Historical events and developments
+   - Attributed quotes and viewpoints
+   - Technical specifications or capabilities
+   - Scientific or research findings
+   - Market trends or industry developments
+   
+   For each claim, determine the precise verification requirements and appropriate sources.
+
+2. MULTI-SOURCE VERIFICATION PROTOCOL: For each significant claim, conduct:
+   - Primary Source Analysis: Trace claims to original research, official documents, or firsthand accounts
+   - Cross-Verification: Compare across minimum 3-5 independent, credible sources
+   - Temporal Relevance: Verify if the information remains accurate or has been superseded
+   - Contextual Completeness: Identify if important qualifying details are missing
+   - Precision Assessment: Check for subtle distortions in statistics or technical details
+   - Source Credibility Evaluation: Assess expertise, methodology, and potential biases
+   
+   Flag any claims needing revision, qualification, or additional context.
+
+3. AUTHORITY LINK IDENTIFICATION: Discover high-value external resources that:
+   - Represent authoritative primary sources for key claims
+   - Offer exceptional depth on specialized subtopics
+   - Provide valuable complementary perspectives from recognized experts
+   - Present original research with strong methodology
+   - Offer uniquely valuable tools, templates, or resources for implementation
+   - Represent diverse viewpoints from credible voices
+   
+   Prioritize sources with established credibility, domain expertise, and content longevity.
+
+4. SOURCE QUALITY ASSESSMENT: Evaluate potential external links against:
+   - Authority Metrics: Expertise, credentials, institutional backing
+   - Content Quality: Depth, accuracy, original research, proper citation
+   - Update Practices: Freshness, revision transparency, correction policies
+   - Integrity Signals: Disclosure practices, separation of editorial/advertising
+   - Accessibility: Readability, user experience, accessibility barriers
+   - Longevity Indicators: Likelihood of persistent availability
+   
+   Exclude sources with aggressive advertising, misleading practices, or content theft.
+
+5. POTENTIAL REVISION IDENTIFICATION: Based on verification findings, identify:
+   - Claims requiring correction or removal
+   - Assertions needing qualification or contextual nuance
+   - Areas benefiting from additional supporting evidence
+   - Opportunities for enhanced precision in language
+   - Places where acknowledged uncertainty is appropriate
+   - Potential perspectives worth acknowledging
+   
+   For each, suggest specific revision approaches that maintain flow and readability.
+
+6. VERIFICATION DOCUMENTATION: Create a verification record including:
+   - Source list for each significant claim
+   - Confidence assessment for various content sections
+   - Notes on deliberately simplified complex topics
+   - Areas where legitimate expert disagreement exists
+   - Recommended review timeline for time-sensitive claims
+   
+   This internal documentation supports ongoing content integrity management.
+
+Present findings as an actionable report prioritizing issues by significance, with specific recommendations for enhancements rather than simply identifying problems.
+```
+
+## Strategic Implementation
+
+The output from this framework provides a comprehensive verification foundation. To maximize its value:
+
+1. **Truth Layers Recognition**: Distinguish between direct factual claims (requiring strict verification) and interpretive frameworks (requiring fair representation of perspectives)
+
+2. **Source Diversity Balance**: Include authoritative sources representing different perspectives, methodologies, and backgrounds to ensure comprehensive understanding
+
+3. **Link Implementation Strategy**: Consider both SEO implications and reader experience when deciding between inline citation links, reference sections, or footnotes
+
+4. **Verification Transparency**: When appropriate, briefly acknowledge verification methods or limitations directly in content to build trust
+
+5. **Living Verification Process**: Implement scheduled re-verification for time-sensitive topics or evolving fields
+
+## Ethical Linking Principles
+
+When implementing external links based on verification findings, follow these principles:
+
+1. **Value-First Linking**: Only include external links that provide genuine additional value to readers, not merely for SEO purposes
+
+2. **Transparent Attribution**: Clearly indicate when ideas or data come from external sources, even when not directly quoting
+
+3. **Context Provision**: Briefly explain what readers will find when following important links to set appropriate expectations
+
+4. **Diverse Voice Inclusion**: Intentionally seek credible sources representing varied perspectives and backgrounds
+
+5. **Link Stability Consideration**: When possible, link to stable resources likely to remain available long-term
+
+## Example Application
+
+For content about "emerging climate adaptation technologies," this framework might:
+
+- Verify specific emissions reduction claims against multiple research sources
+- Identify discrepancies in reported technology adoption rates
+- Flag areas where scientific consensus exists vs. areas of ongoing research
+- Recommend authoritative climate science resources for foundational concepts
+- Suggest specialized technical resources for implementation details
+- Document areas where regular re-verification is needed due to rapid developments
+
+## Adaptation Guidance
+
+Modify this framework based on your specific content domain by:
+
+1. Adjusting verification standards to match topic-appropriate levels of certainty
+2. Adding domain-specific authority indicators relevant to your field
+3. Incorporating specialized fact-checking resources for your content area
+4. Expanding link evaluation criteria for your particular audience needs
+5. Customizing documentation approaches to support your content management system
+
+By approaching verification through this comprehensive framework, you'll establish exceptional content integrity while building a network of valuable external connections—creating trustworthy content that serves as a genuine navigational resource within your domain.

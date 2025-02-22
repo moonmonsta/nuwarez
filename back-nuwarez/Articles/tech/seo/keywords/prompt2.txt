@@ -1,0 +1,36 @@
+**Prompt 2: Content Creation (Draft)**
+
+**Pillar Article Project: [Article Title] - Draft Writing (e.g., 'The Coolest Tech Innovations of 2025')**
+
+*   **Instructions:**
+    *   Based on the approved planning document from Prompt 1, write a first draft of the pillar article.
+    *   Follow the detailed article outline precisely, including all sections, subheadings, and suggested content.
+    *   Incorporate the mapped keywords naturally within the text.  Prioritize primary keywords in the title, introduction, and H2 headings. Use secondary keywords throughout the body text, and weave in long-tail keywords naturally within product descriptions, FAQs, and other relevant sections.
+    *   Maintain the defined target audience and tone.  Write in a style that resonates with the specified audience and adheres to the established tone guidelines.
+    *   Include affiliate links naturally when mentioning products and brands.  Use the suggested affiliate link placements from the outline.  Highlight both mainstream brands (e.g., Amazon, Razer, Oculus) and lesser-known brands (e.g., Moona, Click & Grow) for diversification.  Ensure that each product mention includes a relevant affiliate link.
+    *   Include the approved affiliate disclosure at the top of the article: "This article contains affiliate links. If you purchase through these links, we may earn a commission at no extra cost to you."
+    *   Write effective image captions that are both descriptive and optimized for SEO.  Use relevant keywords in the captions and describe the image accurately.  Example: "The June Oven Plus, an AI-powered smart oven, simplifies cooking with its food recognition technology."
+    *   Anticipate potential objections or counterarguments that readers might have and provide responses within the article.  Address concerns about price, usability, or competing products.
+    *   Include 3-5 credible external links to authoritative sources to build trust and enhance SEO.  Link to reputable websites and research papers related to the topics discussed.  Use descriptive anchor text for these links. Example:  "According to a report by [Research Firm](Link to Report), AI adoption in smart homes is expected to reach X% by 2025."
+    *   Ensure internal links to cluster articles are included as suggested in the outline.  Use descriptive anchor text that accurately reflects the content of the linked article. Example:  "Learn more about the latest advancements in AI-powered kitchen appliances in our article on [AI Kitchen Gadgets](Link to Cluster Article)."
+    *   Adhere to the minimum length guideline of 2000 words.  Ensure that the content is comprehensive and provides value to the reader.  Avoid unnecessary fluff or repetition.
+
+*   **SEO Best Practices:**
+    *   Use H1 for the main title, H2s for main section headings, and H3s for subheadings (if applicable).  Follow the hierarchy correctly.
+    *   Ensure the first 100 words are engaging, keyword-rich, and set the tone for the article.  Capture the reader's attention and clearly state the purpose of the article.
+    *   Maintain a natural keyword density throughout the text.  Avoid keyword stuffing.  Focus on providing valuable content that naturally incorporates the target keywords.
+    *   Use descriptive anchor text for internal and external links.  Avoid generic anchor text like "click here."
+    *   Optimize image alt text with relevant keywords.  Describe the image accurately and concisely.
+
+*   **Specific Sections/Subheadings to Focus On (Optional):**
+    *   [List specific sections for this draft if you want to break the writing into even smaller chunks.  For example, you might ask the writer to focus on the first two sections in the initial draft.]
+
+*   **Writing Style Guidance:**
+    *   Write in a clear, concise, and engaging style.  Use active voice and avoid jargon unless it's appropriate for the target audience.
+    *   Break up long paragraphs into shorter ones for improved readability.
+    *   Use bullet points and numbered lists to present information clearly and concisely.
+    *   Maintain consistency in tone and style throughout the article.
+
+**Deliverables for Prompt 2:**
+
+*   Complete first draft of the pillar article.

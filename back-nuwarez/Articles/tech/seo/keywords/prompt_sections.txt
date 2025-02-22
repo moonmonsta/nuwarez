@@ -1,0 +1,14 @@
+Section Template (Repeat 7 times)
+
+Section [Number]: [Section Heading (H2)] (e.g., "AI Revolution: Smarter Living with AI-Connected Devices")
+Brief Overview: [Write a concise summary of the section's main topic. Focus on the key takeaways and the overall theme.] (e.g., "Explore how AI is transforming our homes, from automated lighting and temperature control to intelligent appliances that learn our preferences.")
+Mainstream Examples: [List 2-3 well-known products or brands. Be specific. Don't just say "smart speakers," say "Amazon Echo Dot (5th Gen)."] (e.g., Amazon Echo Dot (5th Gen), Nest Learning Thermostat, Philips Hue Smart Bulbs)
+Lesser-Known Examples: [List 2-3 less common or emerging products/brands. Focus on innovation and uniqueness.] (e.g., Moona Smart Sleep System, Sengled Smart Lighting, Eve Energy Smart Plug)
+Product Examples with Affiliate Links:
+Mainstream Product 1: "[Product Name](Affiliate Link) - [Detailed description highlighting key features and benefits. Explain why this product is relevant to the section's theme.]" (e.g., "[Amazon Echo Dot (5th Gen)](Affiliate Link) - The Echo Dot is a compact and affordable smart speaker that lets you control your smart home devices with your voice, play music, and get information from Alexa.")
+Lesser-Known Product 1: "[Product Name](Affiliate Link) - [Detailed description highlighting key features and benefits. Explain why this product is relevant to the section's theme.]" (e.g., "[Moona Smart Sleep System](Affiliate Link) - Moona uses advanced temperature regulation technology to optimize your sleep environment, helping you fall asleep faster and wake up refreshed.")
+Mainstream Product 2: "[Product Name](Affiliate Link) - [Detailed description highlighting key features and benefits. Explain why this product is relevant to the section's theme.]" (e.g., "[Nest Learning Thermostat](Affiliate Link) - The Nest Learning Thermostat learns your temperature preferences and automatically adjusts the temperature to save energy and keep you comfortable.")
+Lesser-Known Product 2: "[Product Name](Affiliate Link) - [Detailed description highlighting key features and benefits. Explain why this product is relevant to the section's theme.]" (e.g., "[Eve Energy Smart Plug](Affiliate Link) - The Eve Energy smart plug allows you to monitor your energy consumption and control your appliances remotely, helping you save money and reduce your carbon footprint.")
+Related Cluster Article Link: "[Descriptive Anchor Text](Link to Cluster Article)" (e.g., "Explore more smart home innovations in our guide to [Building the Intelligent Home](Link to Cluster Article).")
+Target Keywords: [List primary, secondary, and long-tail keywords relevant to this section.] (e.g., smart home 2025, AI home automation, connected home devices, intelligent home systems, best smart home gadgets, smart lighting, smart thermostats, energy efficiency)
+

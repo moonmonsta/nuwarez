@@ -1,0 +1,26 @@
+flowchart TD
+    subgraph Core[Voice Core]
+        A[Voice Profile Definition] --> B[Tone Parameters]
+        B --> C[Style Guidelines]
+        C --> D[Language Patterns]
+    end
+
+    subgraph Implementation[Voice Implementation]
+        E[Module Voice Check] --> F[Transition Alignment]
+        F --> G[Consistency Validation]
+        G --> H[Adjustment System]
+    end
+
+    subgraph Maintenance[Voice Maintenance]
+        I[Regular Audits] --> J[Pattern Recognition]
+        J --> K[Voice Evolution]
+        K --> L[Profile Updates]
+    end
+
+    Core --> Implementation
+    Implementation --> Maintenance
+    L --> A
+
+    style Core fill:#f9f,stroke:#333,stroke-width:2px
+    style Implementation fill:#bbf,stroke:#333,stroke-width:2px
+    style Maintenance fill:#bfb,stroke:#333,stroke-width:2px

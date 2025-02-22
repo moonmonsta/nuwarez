@@ -1,0 +1,164 @@
+# NuWareZ Deep Dive Creation Prompt
+
+/*
+PROMPT VERSION: 3.0
+LAST UPDATED: February 2025
+PURPOSE: Guide the creation of comprehensive, accurate, and engaging deep dive content
+*/
+
+## Task Description
+
+Create a comprehensive, SEO-optimized deep dive article titled "[Component Name]: Complete Guide to Implementation & Optimization" for the NuWareZ educational series. This high-level educational resource should serve as the definitive guide on the topic, combining beginner-friendly explanations with advanced insights for experienced practitioners.
+
+## Document Standards
+
+### Metadata Requirements
+- Title length: 50-60 characters
+- Meta description: 150-160 characters
+- Keywords: Must be validated against current search volume data
+- Author attribution: NuWareZ
+- Category: Must align with official 40-component taxonomy
+- Last updated date: Current within 30 days
+
+### Quality Standards
+- Fact-checking: Minimum 3 authoritative sources per claim
+- Tool verification: All features and pricing must be current
+- Case studies: Must be verifiable with published results
+- Statistics: No data points older than 18 months
+- Screenshots: Must reflect current interfaces
+- Code examples: Must be tested and functional
+
+## Voice & Tone Guidelines
+
+### Core Characteristics
+- Professional yet conversational
+- Educational without being condescending
+- Technical without being overwhelming
+- Engaging without being informal
+
+### Writing Style
+- Active voice preferred
+- Short paragraphs (2-3 sentences maximum)
+- Clear topic sentences
+- Transitional phrases between sections
+- Concrete examples for abstract concepts
+- Real-world applications for theoretical concepts
+
+## Content Structure
+
+### 1. Executive Summary (200-300 words)
+Purpose: Provide immediate value assessment
+Requirements:
+- Current industry context
+- Clear value proposition
+- Key learning outcomes
+- Target skill level identification
+- Implementation prerequisites
+
+### 2. Understanding [Component Name] (600-800 words)
+Requirements:
+- Historical context with timeline
+- Current industry standards
+- Technical fundamentals
+- Core concepts explained
+- Common misconceptions addressed
+- Industry applications
+- Future implications
+
+### 3. Implementation Framework (800-1000 words)
+Requirements:
+- Prerequisite checklist
+- Resource requirements
+- Step-by-step instructions
+- Quality assurance protocols
+- Success metrics
+- Troubleshooting guides
+
+### 4. Tool Analysis (800-1000 words)
+Requirements for each tool:
+- Version number
+- Last verified date
+- Pricing structure
+- Key features list
+- Integration capabilities
+- User skill requirements
+- Support quality
+- Update frequency
+
+Tool categories to cover:
+1. Open Source Solutions
+   - Minimum 3 options
+   - Setup instructions
+   - Community support details
+   - Contribution guidelines
+
+2. Free Tools
+   - Feature limitations
+   - Upgrade paths
+   - Usage restrictions
+   - Integration capabilities
+
+3. Premium Tools
+   - ROI analysis
+   - Enterprise features
+   - Support levels
+   - API access details
+
+### 5. Advanced Strategies (600-800 words)
+Requirements:
+- Emerging trends analysis
+- Future-proofing techniques
+- Advanced tool configurations
+- Integration strategies
+- Automation possibilities
+- Performance optimization
+- Scaling considerations
+
+### 6. Case Studies (800-1000 words)
+Requirements for each case study:
+- Company background
+- Initial challenges
+- Solution implementation
+- Resource allocation
+- Timeline details
+- Measurable results
+- Lessons learned
+- Verification sources
+
+### 7. Quality Assurance
+Requirements:
+- Technical accuracy verification
+- Tool functionality testing
+- Link validation
+- Code testing
+- Example verification
+- Source credibility check
+- Data accuracy confirmation
+
+## Deliverable Specifications
+
+### Content Requirements
+- Minimum 4,000 words
+- Maximum 6,000 words
+- Flesch reading ease score: 50-60
+- Heading depth: H1-H4
+- Internal links: Minimum 5
+- External links: Minimum 3 authoritative sources
+- Images: Placeholder notes for custom graphics
+
+### SEO Requirements
+- Primary keyword density: 1-2%
+- Secondary keyword usage: 2-3 per section
+- Header tag optimization
+- Meta tag optimization
+- Image alt text guidelines
+- Schema markup recommendations
+
+### Technical Requirements
+- HTML validation
+- Mobile responsiveness
+- Page speed considerations
+- Accessibility compliance
+- Print formatting
+
+## Verification

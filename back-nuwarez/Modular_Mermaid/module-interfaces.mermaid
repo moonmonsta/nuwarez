@@ -1,0 +1,29 @@
+flowchart LR
+    subgraph M1[Module 1]
+        A1[Content] --> B1[Interface Out]
+    end
+
+    subgraph Interface1[Interface Layer]
+        C1[Thematic Bridge]
+        D1[Key Points Passed]
+        E1[Voice Parameters]
+        F1[Context State]
+    end
+
+    subgraph M2[Module 2]
+        A2[Interface In] --> B2[Content]
+    end
+
+    B1 --> C1
+    B1 --> D1
+    B1 --> E1
+    B1 --> F1
+    
+    C1 --> A2
+    D1 --> A2
+    E1 --> A2
+    F1 --> A2
+
+    style M1 fill:#f9f,stroke:#333,stroke-width:2px
+    style Interface1 fill:#bbf,stroke:#333,stroke-width:2px
+    style M2 fill:#bfb,stroke:#333,stroke-width:2px

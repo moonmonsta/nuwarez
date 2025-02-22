@@ -1,0 +1,25 @@
+flowchart TD
+    subgraph Input[Module Input]
+        A[Previous Section Context] --> B[Key Message Goals]
+        B --> C[Required Elements]
+        C --> D[Target Endpoints]
+    end
+
+    subgraph Internal[Module Processing]
+        E[Section Structure Template] --> F[Voice Parameters]
+        F --> G[Content Generation]
+        G --> H[Internal Validation]
+    end
+
+    subgraph Output[Module Output]
+        I[Content Block] --> J[Connection Points]
+        J --> K[Handoff State]
+        K --> L[Success Criteria]
+    end
+
+    Input --> Internal
+    Internal --> Output
+    
+    style Input fill:#f9f,stroke:#333,stroke-width:2px
+    style Internal fill:#bbf,stroke:#333,stroke-width:2px
+    style Output fill:#bfb,stroke:#333,stroke-width:2px

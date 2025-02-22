@@ -1,0 +1,38 @@
+flowchart TD
+    subgraph Foundation[Foundation Layer]
+        A[Voice Establishment] --> B[Keywords & Research]
+        B --> C[Section Mapping]
+        C --> D[Theme Definition]
+    end
+
+    subgraph Planning[Strategic Planning]
+        E[Progressive Build-up Plan] --> F[Connection Points]
+        F --> G[Emotional Resonance Map]
+        G --> H[Metaphor Placement]
+        H --> I[Conceptual Blend Spots]
+    end
+
+    subgraph Modules[Content Modules]
+        J[Section 1 Module] --> K[Section 2 Module]
+        K --> L[Section 3 Module]
+        L --> M[Section N Module]
+    end
+
+    subgraph Interfaces[Module Interfaces]
+        N[Previous Section End State]
+        O[Link Placement]
+        P[Structure Template]
+        Q[Target End State]
+    end
+
+    Foundation --> Planning
+    Planning --> Modules
+    Interfaces ---> J
+    Interfaces ---> K
+    Interfaces ---> L
+    Interfaces ---> M
+
+    style Foundation fill:#f9f,stroke:#333,stroke-width:2px
+    style Planning fill:#bbf,stroke:#333,stroke-width:2px
+    style Modules fill:#bfb,stroke:#333,stroke-width:2px
+    style Interfaces fill:#fbb,stroke:#333,stroke-width:2px

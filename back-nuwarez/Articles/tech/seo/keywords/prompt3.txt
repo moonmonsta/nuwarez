@@ -1,0 +1,84 @@
+**Prompt 3: Review, Revision, and Finalization**
+
+**Pillar Article Project: [Article Title] - Review and Finalization (e.g., 'The Coolest Tech Innovations of 2025')**
+
+*   **Instructions:**
+    *   Review the first draft of the pillar article from Prompt 2.
+
+*   **Tasks:**
+
+    *   **1. Proofreading and Editing:**
+        *   Thoroughly proofread and edit the article for grammar, spelling, punctuation, clarity, conciseness, and style.  Pay close attention to sentence structure, word choice, and overall flow.
+        *   Check for any factual errors or inconsistencies.
+        *   Ensure the article adheres to the defined target audience and tone.
+
+    *   **2. SEO Optimization:**
+        *   Verify proper use of H1-H3 tags and ensure correct hierarchical structure.
+        *   Check keyword density and distribution.  Ensure keywords are used naturally and avoid keyword stuffing.
+        *   Review the meta description and ensure it's compelling, keyword-rich, and under 160 characters.
+        *   Confirm image alt text optimization.  Ensure alt text is descriptive and includes relevant keywords.
+
+    *   **3. Schema Markup Implementation:**
+        *   Implement the appropriate schema markup (e.g., Article, Product, Review) using JSON-LD.
+        *   Provide the specific JSON-LD code snippet to be placed in the `<head>` section of the HTML.  Ensure the code is valid and populated with the article's specific data (title, description, author, etc.). Example:
+
+        ```json
+        {
+          "@context": "[https://schema.org](https://schema.org)",
+          "@type": "Article",
+          "headline": "[Article Title]",
+          "description": "[Meta Description]",
+          "author": {
+            "@type": "Person",
+            "name": "[Author Name]"
+          },
+          "image": "[https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/](https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/)",
+          "datePublished": "[Date of Publication]",
+          "publisher": {
+            "@type": "Organization",
+            "name": "[Publisher Name]",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "[https://www.pinterest.com/pin/50-brilliant-book-publisher-logos--359725088969019222/](https://www.pinterest.com/pin/50-brilliant-book-publisher-logos--359725088969019222/)"
+            }
+          }
+        }
+        ```
+
+    *   **4. Visual Content Integration:**
+        *   Ensure all suggested visuals are included in the article and placed appropriately.
+        *   Verify that all images have descriptive and SEO-optimized captions.
+        *   Check image sizes and formatting for optimal display.
+
+    *   **5. Internal and External Link Check:**
+        *   Verify that all internal and external links are working correctly.
+        *   Ensure that anchor text is descriptive and relevant.
+
+    *   **6. Affiliate Link Verification:**
+        *   Double-check that all affiliate links are correctly implemented and point to the appropriate products.
+        *   Ensure that the affiliate disclosure is clearly visible at the top of the article.
+
+    *   **7. Call to Action:**
+        *   Ensure the call to action is clear, compelling, and encourages the desired action from the reader (e.g., explore cluster articles, make a purchase).
+
+    *   **8. Metrics Tracking:**
+        *   Confirm the key metrics that should be tracked after publishing the article (e.g., page views, bounce rate, time on page, social shares, conversions).  Set up tracking mechanisms in advance.
+
+    *   **9. Content Update Plan:**
+        *   Review and refine the content update plan.  Specify the frequency of updates (e.g., monthly, quarterly) and the types of updates that will be made (e.g., adding new products, updating statistics, addressing reader feedback).
+
+    *   **10. Legal and Ethical Compliance:**
+        *   Final check for legal compliance, including affiliate disclosures, copyright issues, and any other relevant regulations.
+
+*   **Specific Considerations:**
+    *   Pay attention to readability and user experience.  Ensure the article is easy to navigate and scan.
+    *   Check for consistency in formatting and style throughout the article.
+
+**Deliverables for Prompt 3:**
+
+**Deliverables for Prompt 3:**
+
+*   Final, polished pillar article ready for publication.
+*   Specific JSON-LD code for schema markup implementation.
+*   Final metrics tracking plan.
+*   Final content update plan.

@@ -1,0 +1,72 @@
+prompt 1:
+```
+**Prompt 1: Research and Planning**
+
+**Pillar Article Project: [Article Title] for [Target Niche] (e.g., 'The Coolest Tech Innovations of 2025' for 'Tech Niche')**
+
+*   **1. Keyword Research:**
+    *   Research relevant keywords related to [Main Theme] and [Target Niche] (e.g., "tech innovations," "gadgets," "AI," "smart solutions").
+    *   Identify primary keywords (e.g., "cool tech gadgets 2025," "best AI tools").
+    *   Identify secondary keywords (e.g., "smart home devices 2025," "AR/VR innovations," "wearable tech").
+    *   Identify long-tail keywords (e.g., "what are the best smart home gadgets under $100 in 2025?", "which AR/VR tools are best for professional use?", "how to improve sleep with wearable tech").
+    *   Provide a list of these keywords categorized by type (primary, secondary, long-tail).
+    *   Map these keywords to potential sections of the article (e.g., primary keywords in the title and intro, secondary keywords in H2/H3 headers, long-tail keywords in FAQs and product descriptions).  Be specific about which keywords go where.  Example:  "Primary: 'cool tech gadgets 2025' - Title, Intro, H2 of Section 1.  Secondary: 'best AI tools' - H2 of Section 2, scattered throughout body text. Long-tail: 'what are the best smart home gadgets under $100 in 2025?' - FAQ section."
+
+*   **2. Target Audience and Tone:**
+    *   Define the target audience (e.g., tech-savvy consumers aged 25-45, early adopters interested in the latest gadgets, professionals seeking to improve productivity). Be specific.
+    *   Specify the desired tone (e.g., informative and objective, enthusiastic and engaging, humorous but professional). Provide examples of the desired tone. If there are brand voice guidelines, provide them.
+
+*   **3. Article Outline and Structure:**
+    *   Create a detailed outline, including:
+        *   **Proposed Title (H1 Example):** "The Coolest Tech Innovations of 2025: Gadgets, AI, and Smart Solutions" (Concise, compelling, keyword-rich).
+        *   **Meta Description Example:** "Discover the most exciting tech gadgets, AI tools, and AR/VR innovations shaping 2025. Explore hidden gems and emerging trends that are changing the game." (Under 160 characters, action-oriented, includes keywords).
+        *   **Introduction (First 100 Words Example):** "The year 2025 is shaping up to be a landmark year for technological innovation. From AI-powered smart home solutions that anticipate your needs to mind-bending AR/VR experiences that blur the lines between reality and virtuality, the future is arriving faster than ever. This comprehensive guide serves as your central hub for exploring the coolest tech gadgets, AI tools, and smart solutions poised to revolutionize our lives. We'll delve into both popular products from trusted brands like Amazon, Razer, and Oculus, and uncover lesser-known gems from innovative companies like Moona and Click & Grow that are pushing the boundaries of what's possible. Get ready to be amazed by the tech that will define 2025 and beyond." (Engaging, keyword-rich, sets the stage, mentions specific brands).
+        *   **Body Sections (repeat as needed - provide at least 3 potential sections):**
+            *   **Section 1 Heading (H2 Example):** "AI Revolution: Smarter Living with AI-Connected Devices" (Clear, descriptive, includes keywords).
+                *   Brief overview of how AI is integrated into everyday tools.
+                *   Mention specific mainstream examples (e.g., Anova Culinary Precision Cooker).
+                *   Mention specific lesser-known examples (e.g., June Oven Plus).
+                *   Suggested product examples with affiliate links (including descriptions highlighting key features and benefits). Include at least two examples per section, one mainstream and one lesser-known.  Example: "The [June Oven Plus](Affiliate Link) recognizes over 100 foods and cooks with AI precision, ensuring perfectly cooked meals every time."
+                *   Link to related cluster article (e.g., "AI-Connected Smart Kitchen Appliances You’ve Never Heard Of").
+            *   **Section 2 Heading (H2 Example):** "Immersive Technologies: AR/VR Innovations"
+                *   (Follow the same structure as Section 1)
+            *   **Section 3 Heading (H2 Example):** "Health and Wellness Tech Innovations"
+                *   (Follow the same structure as Section 1)
+        *   **Conclusion and Call to Action:** Recap the key takeaways of the innovative tech of 2025.  CTA Example: "Want to learn more? Check out our in-depth article on AI kitchen gadgets or explore top health tech devices to upgrade your life today!"
+
+*   **4. Visual Content Strategy:**
+    *   Outline a visual strategy. Aim for at least one visual per section.
+    *   Suggest specific types of visuals (comparison tables, infographics, videos, GIFs) and their placement. Example: "Comparison table of smart ovens in Section 1. Infographic on AR/VR adoption rates in Section 2."
+    *   Provide guidance on image sourcing (original, stock, or a combination) and preferred platforms or style guidelines.
+    *   Guidance on image alt text optimization for SEO. Example: "Smart home gadgets like the Philips Hue lights in 2025."
+
+*   **5. Content Promotion Plan:**
+    *   Write 3-5 social media snippets for different platforms. Tailor each snippet to the platform.
+    *   Write 2-3 email marketing subject lines.
+    *   Suggest internal promotion methods (e.g., linking from other relevant articles, featuring in a newsletter).
+
+*   **6. Legal and Ethical Considerations:**
+    *   Affiliate disclosure wording to be used: "This article contains affiliate links. If you purchase through these links, we may earn a commission at no extra cost to you."
+
+*   **7. Minimum Length Guideline:** The pillar article should aim for a minimum length of 2000 words.
+
+**Deliverables for Prompt 1:**
+
+*   Keyword list (categorized and mapped with specifics).
+*   Target audience definition and tone description (with examples).
+*   Detailed article outline (including title, meta description, introduction example, detailed section outlines with product examples and affiliate link placements, conclusion and CTA).
+*   Visual content strategy document (with specific visual suggestions).
+*   Content promotion plan.
+*   Affiliate disclosure wording.
+```
+
+Key changes and enhancements:
+
+*   **More specific keyword mapping:**  Instead of just listing keywords, the prompt asks for specific mapping to sections.
+*   **More detailed target audience definition:**  Prompts for specifics like age range and interests.
+*   **Introduction example provided:**  Gives the writer a starting point and sets the tone.
+*   **More detailed section outlines:** Includes specific instructions for what each section should contain, including product examples and affiliate link placement.
+*   **Visual content strategy enhanced:**  Asks for specific visual types and their placement.
+*   **Affiliate disclosure wording provided:**  No need for the writer to come up with it.
+
+This revised Prompt 1 sets a much stronger foundation for the subsequent writing and review phases.

@@ -1,0 +1,26 @@
+flowchart TD
+    subgraph Context[Context Building]
+        A[Voice Profile] --> B[Previous Section State]
+        B --> C[Target Outcomes]
+        C --> D[Required Elements]
+    end
+
+    subgraph Prompt[Prompt Construction]
+        E[Role Definition] --> F[Context Injection]
+        F --> G[Task Specification]
+        G --> H[Output Format]
+    end
+
+    subgraph Control[Control Mechanisms]
+        I[Quality Checks] --> J[Voice Verification]
+        J --> K[Coherence Validation]
+        K --> L[Feedback Loop]
+    end
+
+    Context --> Prompt
+    Prompt --> Control
+    L --> E
+
+    style Context fill:#f9f,stroke:#333,stroke-width:2px
+    style Prompt fill:#bbf,stroke:#333,stroke-width:2px
+    style Control fill:#bfb,stroke:#333,stroke-width:2px

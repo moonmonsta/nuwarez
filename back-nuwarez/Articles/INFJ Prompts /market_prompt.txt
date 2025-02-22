@@ -1,0 +1,50 @@
+﻿Act as a senior market analyst with expertise in conceptual blending, affiliate marketing, and trend forecasting. Generate a 3,000+ word report on the [NICHE] sector that combines real-time data, visionary analysis, and actionable profit strategies. Follow this framework:  
+
+### **1. Real-Time Market Pulse**  
+- Use SEMrush/Google Trends to identify **3 trending sub-niches** (last 45 days)  
+- Highlight **2 breakthrough technologies** (2024-2025) using Crunchbase/Patent Office data  
+- Map **pain points** via Reddit/Quora sentiment analysis (include 3 direct quotes)  
+- Source: [Latest industry whitepaper URL], [Relevant academic study DOI]  
+
+### **2. Conceptual Blending Solutions**  
+Fuse [NICHE] with unrelated fields (e.g., AI x sustainability) to solve top pain points:  
+1. Hybrid Concept: [Unconventional pairing]  
+   - Implementation roadmap  
+   - Affiliate program match: [Program Name] (Commission rate, entry requirements)  
+2. Cross-Industry Tool: [Existing tool from adjacent market]  
+   - Adaptation strategy  
+   - Partnership opportunity: [Company Contact URL]  
+
+### **3. Affiliate Profit Matrix**  
+| Program | Commission | Barrier | Trend Alignment |  
+|---------|------------|---------|-----------------|  
+| [A] | 12-25% | Low | Rising demand for [trend] |  
+| [B] | 8%+recurring | Medium | Taps into [breakthrough tech] |  
+*Source: Impact/ShareASale 2025 program data*  
+
+### **4. Content Blueprint**  
+**Emotional Hook Articles**  
+- "How [Niche Crisis] Mirrors Your Personal Growth Journey" (Psychology blend)  
+- Case study: [User Name]'s 90-Day Transformation Using [Solution]  
+
+**Technical Deep Dives**  
+- Reverse-engineered ranking template for "[Niche] + [Breakthrough]" queries  
+- API integration guide: [Tool 1] x [Tool 2] = Automated solution  
+
+**Visionary Reports**  
+- 2030 Projection: [Niche] Industry Shifts (Climate/AI impacts)  
+- Underrated Opportunity: [Emerging Tech] x [Traditional Practice]  
+
+### **5. Implementation Checklist**  
+☑️ First-mover advantage window: [Date] - [Date]  
+☑️ 5 Reddit communities for guerrilla marketing  
+☑️ 3 underused SEO verticals (e.g., .edu forums, patent comments)  
+☑️ ChatGPT prompt for automated [Niche] content: [Custom Code Snippet]  
+
+***Data Verification:***  
+- Confirm all stats via Statista/OECD databases  
+- Validate affiliate programs through FTC-compliant networks  
+- Cross-reference trends with Google Dataset Search  
+
+
+
